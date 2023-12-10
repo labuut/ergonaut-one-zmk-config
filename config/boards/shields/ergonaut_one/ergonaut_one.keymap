@@ -305,7 +305,7 @@
         // row 3
         &trans   &none   &none   &none   &none   &none            &none          &none        &kp C_BRI_DN   &kp C_BRI_UP   &none   &kp PSCRN
         // thumb row
-        &trans   &trans   &trans                                  &trans   &trans   &trans
+        &mo LR_SERV   &trans   &trans                             &trans   &trans   &trans
       >;
     };
 
