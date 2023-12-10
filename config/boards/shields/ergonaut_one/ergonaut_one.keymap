@@ -234,7 +234,7 @@
     LR_MAIN_EN {
       bindings = <
         // row 1
-        &kp ESC        &kp Q   &kp W   &kp E   &kp R   &kp T            &kp Y   &kp U   &kp I   &kp O   &kp P       &none
+        &kp ESC        &kp Q   &kp W   &kp E   &kp R   &kp T            &kp Y   &kp U   &kp I   &kp O   &kp P       &bootloader
         // row 2
         &mt LWIN TAB   &kp A   &kp S   &kp D   &kp F   &kp G            &kp H   &kp J   &kp K   &kp L   &none       &kp BSPC
         // row 3
@@ -312,11 +312,11 @@
     LR_SERVICE {
       bindings = <
         // row 1
-        &trans       &none   &none          &none          &none          &bootloader            &none   &none   &none   &none   &none   &none
+        &trans       &none   &none          &none          &none          &bootloader            &bootloader   &none   &none   &none   &none   &none
         // row 2
-        &bt BT_CLR   &none   &bt BT_SEL 3   &bt BT_SEL 4   &bt BT_SEL 5   &sys_reset             &none   &none   &none   &none   &none   &none
+        &bt BT_CLR   &none   &bt BT_SEL 3   &bt BT_SEL 4   &bt BT_SEL 5   &sys_reset             &sys_reset    &none   &none   &none   &none   &none
         // row 3
-        &trans       &none   &bt BT_SEL 0   &bt BT_SEL 1   &bt BT_SEL 2   &none                  &none   &none   &none   &none   &none   &none
+        &trans       &none   &bt BT_SEL 0   &bt BT_SEL 1   &bt BT_SEL 2   &none                  &none         &none   &none   &none   &none   &none
         // thumb row
         &trans   &trans   &trans                                                                 &trans   &trans   &trans
       >;
