@@ -183,35 +183,20 @@
       layers = <LR_MAIN_EN LR_MAIN_RU LR_NUMS LR_WILDS LR_NAV>; 
       bindings = <&EN_RU_MOD>;
     };
-    // two very left thumb keys
+    // LR_SERVICE: two very left thumb keys
     thumb_left {
       timeout-ms = <50>;
       key-positions = <36 37>;
       layers = <LR_MAIN_EN LR_MAIN_RU>; 
       bindings = <&mo LR_SERV>;
     };
-    // two very right thumb keys
+    // LR_SERVICE: two very right thumb keys
     thumb_right {
       timeout-ms = <50>;
       key-positions = <40 41>;
       layers = <LR_MAIN_EN LR_MAIN_RU>; 
       bindings = <&mo LR_SERV>;
     };
-
-    // // EN-RU layout: DOT + BSPC
-    // combo_bspc {
-    //   timeout-ms = <50>;
-    //   key-positions = <23 35>;
-    //   layers = <LR_MAIN_EN LR_MAIN_RU LR_NUMS LR_WILDS LR_NAV>; 
-    //   bindings = <&EN_RU_MOD>;
-    // };
-    // // EN-RU layout: 'Ю' + ','
-    // combo_layout {
-    //   timeout-ms = <50>;
-    //   key-positions = <33 34>;
-    //   layers = <LR_MAIN_EN LR_MAIN_RU LR_NUMS LR_WILDS LR_NAV>; 
-    //   bindings = <&EN_RU_MOD>;
-    // };
   };
 };
 
@@ -320,7 +305,7 @@
         // row 3
         &trans   &none   &none   &none   &none   &none            &none          &none        &kp C_BRI_DN   &kp C_BRI_UP   &none   &kp PSCRN
         // thumb row
-        &mo LR_SERV   &trans   &trans                             &trans   &trans   &trans
+        &trans   &trans   &trans                                  &trans   &trans   &trans
       >;
     };
 
