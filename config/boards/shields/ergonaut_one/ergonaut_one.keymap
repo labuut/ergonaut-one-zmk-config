@@ -183,6 +183,21 @@
       layers = <LR_MAIN_EN LR_MAIN_RU LR_NUMS LR_WILDS LR_NAV>; 
       bindings = <&EN_RU_MOD>;
     };
+    // two very left thumb keys
+    thumb_left {
+      timeout-ms = <50>;
+      key-positions = <36 37>;
+      layers = <LR_MAIN_EN LR_MAIN_RU>; 
+      bindings = <&mo LR_SERV>;
+    };
+    // two very right thumb keys
+    thumb_right {
+      timeout-ms = <50>;
+      key-positions = <40 41>;
+      layers = <LR_MAIN_EN LR_MAIN_RU>; 
+      bindings = <&mo LR_SERV>;
+    };
+
     // // EN-RU layout: DOT + BSPC
     // combo_bspc {
     //   timeout-ms = <50>;
