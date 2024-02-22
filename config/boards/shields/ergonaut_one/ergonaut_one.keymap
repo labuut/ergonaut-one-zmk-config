@@ -126,32 +126,32 @@
       bindings = <&kp FSLH>, <&kp BSLH>;
       mods = <(MOD_LSFT)>;
     };
-    // PARS: PARS {
-    //   compatible = "zmk,behavior-mod-morph";
-    //   label = "PARS";
-    //   #binding-cells = <0>;
-    //   bindings = <&kp LPAR>, <&kp RPAR>;
-    //   mods = <(MOD_LSFT)>;
-    // };
-    BRCS: BRCS {
+    LPAR_LBRC: LPAR_LBRC {
       compatible = "zmk,behavior-mod-morph";
-      label = "BRCS";
+      label = "LPAR_LBRC";
       #binding-cells = <0>;
-      bindings = <&kp LBRC>, <&kp RBRC>;
+      bindings = <&kp LPAR>, <&kp LBRC>;
       mods = <(MOD_LSFT)>;
     };
-    BKTS: BKTS {
+    RPAR_RBRC: RPAR_RBRC {
       compatible = "zmk,behavior-mod-morph";
-      label = "BKTS";
+      label = "RPAR_RBRC";
       #binding-cells = <0>;
-      bindings = <&kp LBKT>, <&kp RBKT>;
+      bindings = <&kp RPAR>, <&kp RBRC>;
       mods = <(MOD_LSFT)>;
     };
-    LT_GT: LT_GT {
+    LT_LBKT: LT_LBKT {
       compatible = "zmk,behavior-mod-morph";
-      label = "LT_GT";
+      label = "LT_LBKT";
       #binding-cells = <0>;
-      bindings = <&kp LT>, <&kp GT>;
+      bindings = <&kp LT>, <&kp LBKT>;
+      mods = <(MOD_LSFT)>;
+    };
+    GT_RBKT: GT_RBKT {
+      compatible = "zmk,behavior-mod-morph";
+      label = "GT_RBKT";
+      #binding-cells = <0>;
+      bindings = <&kp GT>, <&kp RBKT>;
       mods = <(MOD_LSFT)>;
     };
     // LPAR_LT: LPAR_LT {
@@ -240,13 +240,6 @@
       // bindings = <hold>, <tap>;
       bindings = <&kp>, <&kp>;
     };
-    // td - tap-dance
-    td: td {
-      compatible = "zmk,behavior-tap-dance";
-      #binding-cells = <2>;
-      tapping-term-ms = <200>;
-      bindings = <&kp>, <&kp>;
-    };
   };
 };
 
@@ -295,12 +288,11 @@
     LR_WILDS {
       bindings = <
         // row 1
-        &kp GRAVE   &NUMBER_RU   &kp HASH   &kp PIPE   &kp AMPS    &kp CARET            &kp PRCNT       &FSLH_BSLH      &kp ASTRK       &kp SQT     &kp DQT    &none
+        &kp GRAVE   &NUMBER_RU   &kp HASH   &kp PIPE   &kp AMPS    &kp CARET            &kp PRCNT   &FSLH_BSLH   &kp ASTRK    &kp SQT     &kp DQT    &none
         // row 2
-        &trans      &none        &kp AT     &kp EXCL   &kp QMARK   &none                &kp EQUAL       &kp MINUS       &kp PLUS        &kp COLON   &kp SEMI   &trans
+        &trans      &none        &kp AT     &kp EXCL   &kp QMARK   &none                &kp EQUAL   &kp MINUS    &kp PLUS     &kp COLON   &kp SEMI   &trans
         // row 3
-        // &trans      &none        &kp DLLR   &none      &none       &none                &td RBKT LBKT   &td LPAR RPAR   &td LBRC RBRC   &kp LT      &kp GT     &trans
-        &trans      &none        &kp DLLR   &none      &none       &none                &BKTS       &kp LPAR     &kp RPAR    &BRCS       &LT_GT     &kp GT
+        &trans      &none        &kp DLLR   &none      &none       &none                &none       &LPAR_LBRC   &RPAR_RBRC   &LT_LBKT    &GT_RBKT   &trans
         // thumb row
         &trans   &trans   &trans                                                        &trans   &trans   &trans
       >;
