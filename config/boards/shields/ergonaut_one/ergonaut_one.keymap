@@ -200,7 +200,7 @@
     // EN-RU layout: K + L
     switch_lang_new {
       timeout-ms = <50>;
-      key-positions = <21 22>;
+      key-positions = <20 21>;
       layers = <LR_MAIN_EN LR_MAIN_RU LR_NUMS LR_WILDS LR_NAV>; 
       bindings = <&EN_RU>;
     };
