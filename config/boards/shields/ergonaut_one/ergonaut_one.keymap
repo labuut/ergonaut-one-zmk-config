@@ -15,11 +15,8 @@
 #define LR_NAV      4
 #define LR_SPEC     5
 #define LR_SERV     6
-#define LR_GAME1    7
-#define LR_GAME2    8
-#define LR_GAME3    9
 
-&lt { quick_tap_ms = <150>; };
+&lt { quick_tap_ms = <200>; };
 &mt { quick-tap-ms = <400>; };
 &sl { release-after-ms = <1000>; };
 
@@ -189,23 +186,24 @@
 
 / {
   combos {
+    // indexes start from 0
     compatible = "zmk,combos";
-    // EN-RU layout: . + BSPC
-    combo_bspc {
+    // EN-RU layout: [ + BSPC
+    switch_lang {
       timeout-ms = <50>;
-      key-positions = <23 35>;
+      key-positions = <11 23>;
       layers = <LR_MAIN_EN LR_MAIN_RU LR_NUMS LR_WILDS LR_NAV>; 
       bindings = <&EN_RU>;
     };
-    // LR_SERVICE: two very left thumb keys
-    thumb_left {
+    // LR_SERVICE: two very left thumb keys of LEFT part
+    to_serv_left {
       timeout-ms = <50>;
       key-positions = <36 37>;
       layers = <LR_MAIN_EN LR_MAIN_RU>; 
       bindings = <&mo LR_SERV>;
     };
-    // LR_SERVICE: two very right thumb keys
-    thumb_right {
+    // LR_SERVICE: two very right thumb keys of RIGHT part
+    to_serv_right {
       timeout-ms = <50>;
       key-positions = <40 41>;
       layers = <LR_MAIN_EN LR_MAIN_RU>; 
@@ -313,65 +311,26 @@
     LR_SPECIAL {
       bindings = <
         // row 1
-        &trans   &none   &none   &none   &none   &none            &to LR_GAME1   &kp C_PP     &kp C_PREV     &kp C_NEXT     &none   &kp DEL
+        &trans   &none   &none   &none   &none   &none            &none   &kp C_PP     &kp C_PREV     &kp C_NEXT     &none   &kp DEL
         // row 2
-        &trans   &none   &none   &none   &none   &none            &none          &kp C_MUTE   &kp C_VOL_DN   &kp C_VOL_UP   &none   &none
+        &trans   &none   &none   &none   &none   &none            &none   &kp C_MUTE   &kp C_VOL_DN   &kp C_VOL_UP   &none   &none
         // row 3
-        &trans   &none   &none   &none   &none   &none            &none          &none        &kp C_BRI_DN   &kp C_BRI_UP   &none   &kp PSCRN
+        &trans   &none   &none   &none   &none   &none            &none   &none        &kp C_BRI_DN   &kp C_BRI_UP   &none   &kp PSCRN
         // thumb row
-        &trans   &trans   &mo LR_SERV                             &mo LR_SERV   &trans   &trans
+        &trans   &trans   &trans                                  &trans   &trans   &trans
       >;
     };
 
     LR_SERVICE {
       bindings = <
         // row 1
-        &trans       &none   &none          &none          &none          &bootloader            &bootloader   &none   &none   &none   &none   &none
+        &none   &none   &none   &none   &none   &bootloader            &bootloader   &none          &none          &none          &none   &bt BT_CLR
         // row 2
-        &bt BT_CLR   &none   &bt BT_SEL 3   &bt BT_SEL 4   &bt BT_SEL 5   &sys_reset             &sys_reset    &none   &none   &none   &none   &none
+        &none   &none   &none   &none   &none   &sys_reset             &sys_reset    &bt BT_SEL 3   &bt BT_SEL 4   &bt BT_SEL 5   &none   &none
         // row 3
-        &trans       &none   &bt BT_SEL 0   &bt BT_SEL 1   &bt BT_SEL 2   &none                  &none         &none   &none   &none   &none   &none
+        &none   &none   &none   &none   &none   &none                  &none         &bt BT_SEL 0   &bt BT_SEL 1   &bt BT_SEL 2   &none   &none 
         // thumb row
-        &trans   &trans   &trans                                                                 &trans   &trans   &trans
-      >;
-    };
-    
-    LR_GAME1 {
-      bindings = <
-        // row 1
-        &trans    &kp T   &kp Q   &kp W   &kp E   &kp R             &kp Y   &kp U   &kp I       &kp O     &kp P      &kp PLUS
-        // row 2
-        &kp TAB   &kp G   &kp A   &kp S   &kp D   &kp F             &kp H   &kp J   &kp K       &kp L     &kp SEMI   &trans
-        // row 3
-        &trans    &kp Z   &kp X   &kp C   &kp V   &kp B             &kp N   &kp M   &kp COMMA   &kp DOT   &kp FSLH   &TO_MAIN_EN
-        // thumb row
-        &sl LR_GAME2   &kp LSHFT   &kp SPACE                        &sl LR_GAME3   &kp LSHFT   &kp ENTER
-      >;
-    };
-    
-    LR_GAME2 {
-      bindings = <
-        // row 1
-        &kp GRAVE   &trans   &kp N1   &kp N2   &kp N3   &trans            &trans   &kp F7   &kp F8   &kp F9   &trans    &trans
-        // row 2
-        &trans      &trans   &kp N4   &kp N5   &kp N6   &trans            &trans   &kp F4   &kp F5   &kp F6   &trans    &trans
-        // row 3
-        &trans      &trans   &kp N7   &kp N8   &kp N9   &trans            &trans   &kp F1   &kp F2   &kp F3   &trans    &trans
-        // thumb row
-        &kp ENTER  &trans   &trans                                        &trans   &trans   &trans
-      >;
-    };
-    
-    LR_GAME3 {
-      bindings = <
-        // row 1
-        &kp GRAVE   &trans   &trans   &trans   &trans   &trans            &trans   &trans     &kp UP     &trans      &trans   &trans
-        // row 2
-        &trans      &trans   &trans   &trans   &trans   &trans            &trans   &kp LEFT   &kp DOWN   &kp RIGHT   &trans   &trans
-        // row 3
-        &trans      &trans   &trans   &trans   &trans   &trans            &trans   &trans     &trans     &trans      &trans   &trans
-        // thumb row
-        &trans   &trans   &trans                                          &kp SPACE   &trans   &trans
+        &trans   &trans   &trans                                       &trans   &trans   &trans
       >;
     };
   };
