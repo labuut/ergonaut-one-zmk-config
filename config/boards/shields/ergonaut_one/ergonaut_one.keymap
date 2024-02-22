@@ -241,12 +241,12 @@
       bindings = <&kp>, <&kp>;
     };
     // td - tap-dance
-    // td: td {
-    //   compatible = "zmk,behavior-tap-dance";
-    //   #binding-cells = <2>;
-    //   tapping-term-ms = <200>;
-    //   bindings = <&kp>, <&kp>;
-    // };
+    td: td {
+      compatible = "zmk,behavior-tap-dance";
+      #binding-cells = <2>;
+      tapping-term-ms = <200>;
+      bindings = <&kp>, <&kp>;
+    };
   };
 };
 
