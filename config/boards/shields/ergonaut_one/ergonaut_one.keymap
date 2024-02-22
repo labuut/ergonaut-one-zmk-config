@@ -197,6 +197,13 @@
       layers = <LR_MAIN_EN LR_MAIN_RU LR_NUMS LR_WILDS LR_NAV>; 
       bindings = <&EN_RU>;
     };
+    // EN-RU layout: K + L
+    switch_lang {
+      timeout-ms = <50>;
+      key-positions = <21 22>;
+      layers = <LR_MAIN_EN LR_MAIN_RU LR_NUMS LR_WILDS LR_NAV>; 
+      bindings = <&EN_RU>;
+    };
     // LR_SERVICE: two very left thumb keys of LEFT part
     to_serv_left {
       timeout-ms = <50>;
