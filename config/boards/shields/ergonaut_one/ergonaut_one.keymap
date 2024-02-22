@@ -16,7 +16,7 @@
 #define LR_SPEC     5
 #define LR_SERV     6
 
-&lt { quick_tap_ms = <200>; };
+&lt { quick_tap_ms = <100>; };
 &mt { quick-tap-ms = <400>; };
 &sl { release-after-ms = <1000>; };
 
