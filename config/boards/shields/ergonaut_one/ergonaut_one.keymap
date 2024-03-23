@@ -229,38 +229,43 @@
 };
 
 / {
-  // combos
+  // combos (indexes start from 0)
   combos {
-    // indexes start from 0
     compatible = "zmk,combos";
-    // EN-RU layout: [ + BSPC
-    switch_lang {
-      timeout-ms = <50>;
-      key-positions = <11 23>;
-      layers = <LR_MAIN_EN LR_MAIN_RU LR_NUMS LR_WILDS LR_NAV>; 
-      bindings = <&EN_RU>;
-    };
     // EN-RU layout: K + L
     switch_lang_new {
-      timeout-ms = <50>;
+      timeout-ms = <20>;
       key-positions = <20 21>;
       layers = <LR_MAIN_EN LR_MAIN_RU LR_NUMS LR_WILDS LR_NAV>; 
       bindings = <&EN_RU>;
     };
-    // LR_SERVICE: two very left thumb keys of LEFT part
+    // LR_SERVICE. Left half: top left (Esc) + right bottom (Space)
     to_serv_left {
       timeout-ms = <50>;
-      key-positions = <36 37>;
+      key-positions = <0 38>;
       layers = <LR_MAIN_EN LR_MAIN_RU>; 
       bindings = <&mo LR_SERV>;
     };
-    // LR_SERVICE: two very right thumb keys of RIGHT part
+    // LR_SERVICE. Right half: top right + left bottom (Space)
     to_serv_right {
       timeout-ms = <50>;
-      key-positions = <40 41>;
+      key-positions = <11 39>;
       layers = <LR_MAIN_EN LR_MAIN_RU>; 
       bindings = <&mo LR_SERV>;
     };
+    // to_serv_left {
+    //   timeout-ms = <50>;
+    //   key-positions = <36 37>;
+    //   layers = <LR_MAIN_EN LR_MAIN_RU>; 
+    //   bindings = <&mo LR_SERV>;
+    // };
+    // // LR_SERVICE: two very right thumb keys of RIGHT part
+    // to_serv_right {
+    //   timeout-ms = <50>;
+    //   key-positions = <40 41>;
+    //   layers = <LR_MAIN_EN LR_MAIN_RU>; 
+    //   bindings = <&mo LR_SERV>;
+    // };
   };
 };
 
