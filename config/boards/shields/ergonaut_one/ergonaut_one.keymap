@@ -169,62 +169,6 @@
       bindings = <&kp RPAR>, <&cmt RBKT RBRC>;
       mods = <(MOD_LSFT)>;
     };
-    // LPAR_LBRC: LPAR_LBRC {
-    //   compatible = "zmk,behavior-mod-morph";
-    //   label = "LPAR_LBRC";
-    //   #binding-cells = <0>;
-    //   bindings = <&kp LPAR>, <&kp LBRC>;
-    //   mods = <(MOD_LSFT)>;
-    // };
-    // RPAR_RBRC: RPAR_RBRC {
-    //   compatible = "zmk,behavior-mod-morph";
-    //   label = "RPAR_RBRC";
-    //   #binding-cells = <0>;
-    //   bindings = <&kp RPAR>, <&kp RBRC>;
-    //   mods = <(MOD_LSFT)>;
-    // };
-    // LT_LBKT: LT_LBKT {
-    //   compatible = "zmk,behavior-mod-morph";
-    //   label = "LT_LBKT";
-    //   #binding-cells = <0>;
-    //   bindings = <&kp LT>, <&kp LBKT>;
-    //   mods = <(MOD_LSFT)>;
-    // };
-    // GT_RBKT: GT_RBKT {
-    //   compatible = "zmk,behavior-mod-morph";
-    //   label = "GT_RBKT";
-    //   #binding-cells = <0>;
-    //   bindings = <&kp GT>, <&kp RBKT>;
-    //   mods = <(MOD_LSFT)>;
-    // };
-    // LPAR_LT: LPAR_LT {
-    //   compatible = "zmk,behavior-mod-morph";
-    //   label = "LPAR_LT";
-    //   #binding-cells = <0>;
-    //   bindings = <&kp LPAR>, <&kp LT>;
-    //   mods = <(MOD_LSFT)>;
-    // };
-    // RPAR_GT: RPAR_GT {
-    //   compatible = "zmk,behavior-mod-morph";
-    //   label = "RPAR_GT";
-    //   #binding-cells = <0>;
-    //   bindings = <&kp RPAR>, <&kp GT>;
-    //   mods = <(MOD_LSFT)>;
-    // };
-    // LBRC_LBKT: LBRC_LBKT {
-    //   compatible = "zmk,behavior-mod-morph";
-    //   label = "LBRC_LBKT";
-    //   #binding-cells = <0>;
-    //   bindings = <&kp LBRC>, <&kp LBKT>;
-    //   mods = <(MOD_LSFT)>;
-    // };
-    // RBRC_RBKT: RBRC_RBKT {
-    //   compatible = "zmk,behavior-mod-morph";
-    //   label = "RBRC_RBKT";
-    //   #binding-cells = <0>;
-    //   bindings = <&kp RBRC>, <&kp RBKT>;
-    //   mods = <(MOD_LSFT)>;
-    // };
   };
 };
 
@@ -253,19 +197,6 @@
       layers = <LR_MAIN_EN LR_MAIN_RU>; 
       bindings = <&mo LR_SERV>;
     };
-    // to_serv_left {
-    //   timeout-ms = <50>;
-    //   key-positions = <36 37>;
-    //   layers = <LR_MAIN_EN LR_MAIN_RU>; 
-    //   bindings = <&mo LR_SERV>;
-    // };
-    // // LR_SERVICE: two very right thumb keys of RIGHT part
-    // to_serv_right {
-    //   timeout-ms = <50>;
-    //   key-positions = <40 41>;
-    //   layers = <LR_MAIN_EN LR_MAIN_RU>; 
-    //   bindings = <&mo LR_SERV>;
-    // };
   };
 };
 
