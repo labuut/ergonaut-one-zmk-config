@@ -27,6 +27,35 @@
 };
 
 / {
+  // tap mods
+  behaviors {
+      // // NOTE: example, "LR_WILDS_WITH 0 TAB". 0 is dummy argument
+      // // https://zmk.dev/docs/behaviors/hold-tap#using-different-behavior-types-with-hold-taps
+      // LR_WILDS_WITH: LR_WILDS_WITH {
+      //     compatible = "zmk,behavior-hold-tap";
+      //     label = "LR_WILDS_WITH";
+      //     #binding-cells = <2>;
+      //     flavor = "hold-preferred";
+      //     tapping-term-ms = <150>;
+      //     // bindings = <hold>, <tap>;
+      //     bindings = <&WILDS_RU>, <&kp>;
+      // };
+
+    // cmt - custom mod-tap
+    cmt: cmt {
+      compatible = "zmk,behavior-hold-tap";
+      label = "custom-mod-tap";
+      #binding-cells = <2>;
+      flavor = "tap-preferred";
+      tapping-term-ms = <200>;
+      quick-tap-ms = <200>;
+      // bindings = <hold>, <tap>;
+      bindings = <&kp>, <&kp>;
+    };
+  };
+};
+
+/ {
   macros {
     LAYOUT_EN: LAYOUT_EN {
       label = "ZM_LAYOUT_EN";
@@ -126,34 +155,48 @@
       bindings = <&kp FSLH>, <&kp BSLH>;
       mods = <(MOD_LSFT)>;
     };
-    LPAR_LBRC: LPAR_LBRC {
+    L_PAR_BRC_BKT: L_PAR_BRC_BKT {
       compatible = "zmk,behavior-mod-morph";
-      label = "LPAR_LBRC";
+      label = "L_PAR_BRC_BKT";
       #binding-cells = <0>;
-      bindings = <&kp LPAR>, <&kp LBRC>;
+      bindings = <&kp LPAR>, <&cmt LBKT LBRC>;
       mods = <(MOD_LSFT)>;
     };
-    RPAR_RBRC: RPAR_RBRC {
+    R_PAR_BRC_BKT: R_PAR_BRC_BKT {
       compatible = "zmk,behavior-mod-morph";
-      label = "RPAR_RBRC";
+      label = "R_PAR_BRC_BKT";
       #binding-cells = <0>;
-      bindings = <&kp RPAR>, <&kp RBRC>;
+      bindings = <&kp RPAR>, <&cmt RBKT RBRC>;
       mods = <(MOD_LSFT)>;
     };
-    LT_LBKT: LT_LBKT {
-      compatible = "zmk,behavior-mod-morph";
-      label = "LT_LBKT";
-      #binding-cells = <0>;
-      bindings = <&kp LT>, <&kp LBKT>;
-      mods = <(MOD_LSFT)>;
-    };
-    GT_RBKT: GT_RBKT {
-      compatible = "zmk,behavior-mod-morph";
-      label = "GT_RBKT";
-      #binding-cells = <0>;
-      bindings = <&kp GT>, <&kp RBKT>;
-      mods = <(MOD_LSFT)>;
-    };
+    // LPAR_LBRC: LPAR_LBRC {
+    //   compatible = "zmk,behavior-mod-morph";
+    //   label = "LPAR_LBRC";
+    //   #binding-cells = <0>;
+    //   bindings = <&kp LPAR>, <&kp LBRC>;
+    //   mods = <(MOD_LSFT)>;
+    // };
+    // RPAR_RBRC: RPAR_RBRC {
+    //   compatible = "zmk,behavior-mod-morph";
+    //   label = "RPAR_RBRC";
+    //   #binding-cells = <0>;
+    //   bindings = <&kp RPAR>, <&kp RBRC>;
+    //   mods = <(MOD_LSFT)>;
+    // };
+    // LT_LBKT: LT_LBKT {
+    //   compatible = "zmk,behavior-mod-morph";
+    //   label = "LT_LBKT";
+    //   #binding-cells = <0>;
+    //   bindings = <&kp LT>, <&kp LBKT>;
+    //   mods = <(MOD_LSFT)>;
+    // };
+    // GT_RBKT: GT_RBKT {
+    //   compatible = "zmk,behavior-mod-morph";
+    //   label = "GT_RBKT";
+    //   #binding-cells = <0>;
+    //   bindings = <&kp GT>, <&kp RBKT>;
+    //   mods = <(MOD_LSFT)>;
+    // };
     // LPAR_LT: LPAR_LT {
     //   compatible = "zmk,behavior-mod-morph";
     //   label = "LPAR_LT";
@@ -222,35 +265,6 @@
 };
 
 / {
-  // tap mods
-  behaviors {
-      // // NOTE: example, "LR_WILDS_WITH 0 TAB". 0 is dummy argument
-      // // https://zmk.dev/docs/behaviors/hold-tap#using-different-behavior-types-with-hold-taps
-      // LR_WILDS_WITH: LR_WILDS_WITH {
-      //     compatible = "zmk,behavior-hold-tap";
-      //     label = "LR_WILDS_WITH";
-      //     #binding-cells = <2>;
-      //     flavor = "hold-preferred";
-      //     tapping-term-ms = <150>;
-      //     // bindings = <hold>, <tap>;
-      //     bindings = <&WILDS_RU>, <&kp>;
-      // };
-
-    // cmt - custom mod-tap
-    cmt: cmt {
-      compatible = "zmk,behavior-hold-tap";
-      label = "custom-mod-tap";
-      #binding-cells = <2>;
-      flavor = "tap-preferred";
-      tapping-term-ms = <200>;
-      quick-tap-ms = <200>;
-      // bindings = <hold>, <tap>;
-      bindings = <&kp>, <&kp>;
-    };
-  };
-};
-
-/ {
   keymap {
     compatible = "zmk,keymap";
     LR_MAIN_EN {
@@ -269,11 +283,11 @@
     LR_MAIN_RU {
       bindings = <
         // row 1
-        &trans   &kp Q   &kp W   &kp E   &kp R   &cmt GRAVE T            &kp Y   &kp U         &kp I       &kp O     &kp P       &cmt RBKT LBKT
+        &trans   &kp Q   &kp W   &kp E   &kp R   &cmt GRAVE T            &kp Y   &kp U          &kp I       &kp O     &kp P       &kp LBKT
         // row 2
-        &trans   &kp A   &kp S   &kp D   &kp F   &kp G                   &kp H   &kp J         &kp K       &kp L     &kp SEMI    &trans
+        &trans   &kp A   &kp S   &kp D   &kp F   &kp G                   &kp H   &cmt SQT J     &kp K       &kp L     &kp SEMI    &trans
         // row 3
-        &trans   &kp Z   &kp X   &kp C   &kp V   &kp B                   &kp N   &cmt SQT M    &kp COMMA   &kp DOT   &COMMA_RU   &DOT_RU
+        &trans   &kp Z   &kp X   &kp C   &kp V   &kp B                   &kp N   &cmt RBKT M    &kp COMMA   &kp DOT   &COMMA_RU   &DOT_RU
         // thumb row
         &trans   &trans   &trans                                         &trans   &WILDS_RU   &trans
       >;
@@ -299,7 +313,8 @@
         // row 2
         &trans      &none        &kp AT     &kp EXCL   &kp QMARK   &none                &kp EQUAL   &kp MINUS    &kp PLUS     &kp COLON   &kp SEMI   &trans
         // row 3
-        &trans      &none        &kp DLLR   &none      &none       &none                &none       &LPAR_LBRC   &RPAR_RBRC   &LT_LBKT    &GT_RBKT   &trans
+        &trans      &none        &kp DLLR   &none      &none       &none                &none       &none   &none   &kp LT      &kp GT     &trans
+        // &trans      &none        &kp DLLR   &none      &none       &none                &none       &LPAR_LBRC   &RPAR_RBRC   &LT_LBKT    &GT_RBKT   &trans
         // thumb row
         &trans   &trans   &trans                                                        &trans   &trans   &trans
       >;
