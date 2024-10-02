@@ -16,6 +16,7 @@
 #define LR_NAV      4
 #define LR_SPEC     5
 #define LR_SERV     6
+#define LR_MOUSE    7
 
 &lt { quick_tap_ms = <100>; };
 &mt { quick-tap-ms = <400>; };
