@@ -17,7 +17,7 @@
 #define LR_MEDIA      9
 #define LR_SERVICE    10
 
-#define ZMK_MOUSE_DEFAULT_MOVE_VAL 800  // 600
+#define ZMK_MOUSE_DEFAULT_MOVE_VAL 600  // 600
 #define ZMK_MOUSE_DEFAULT_SCRL_VAL 20   // 10
 
 #define U_TAPPING_TERM 200
@@ -399,7 +399,7 @@
         // row 3
         &none     &kp Z         &kp X         &kp C          &kp V          &kp B            &kp N   &kp M   &none   &none   &kp COMMA   &kp DOT
         // thumb row
-        &lt LR_FN ENTER   &mo LR_MOUSE   &lt LR_NUMS SPACE                                   &lt LR_NAV SPACE   &mo LR_WILDS   &lt LR_MEDIA ENTER
+        &lt LR_FN ENTER   &mo LR_NUMS   &lt LR_MOUSE SPACE                                   &lt LR_NAV SPACE   &mo LR_WILDS   &lt LR_MEDIA ENTER
       >;
     };
     
