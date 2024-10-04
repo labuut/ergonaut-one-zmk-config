@@ -422,8 +422,6 @@
         &kp GRAVE   &NUMBER_RU   &kp HASH       &kp PIPE          &kp AMPS           &kp CARET            &kp PRCNT   &FSLH_BSLH         &kp ASTRK         &kp SQT           &kp DQT          &none
         // row 2
         &trans      &kp LGUI     &lmt LALT AT   &lmt LSHFT EXCL   &lmt LCTRL QMARK   &none                &kp EQUAL   &rmt LCTRL MINUS   &rmt LSHFT PLUS   &rmt LALT COLON   &rmt LGUI SEMI   &trans
-        // &trans      &kp LGUI     &lmt LALT AT   &lmt LSHFT EXCL   &lmt LCTRL QMARK   &none                &kp EQUAL   &rmt RCTRL MINUS   &rmt LSHFT PLUS   &rmt LALT COLON   &kp LGUI SEMI   &trans
-        // &kp TAB   &lmt LGUI A   &lmt LALT S   &lmt LSHFT D   &lmt LCTRL F   &kp G                      &kp H   &rmt RCTRL J                &rmt LSHFT K          &rmt LALT L       &kp LGUI   &kp BSPC
         // row 3
         &trans      &none        &kp DLLR       &none             &none              &none                &none       &L_PAR_BRC_BKT     &R_PAR_BRC_BKT    &kp LT            &kp GT          &trans
         // thumb row
@@ -473,13 +471,13 @@
     LR_MOUSE {
       bindings = <
         // row 1
-        &trans   &trans              &none         &none          &none           &none            &msc SCRL_UP     &msc SCRL_LEFT   &mmv MOVE_UP     &msc SCRL_RIGHT   &none    &none
+        &trans   &trans              &mkp RCLK     &mkp MCLK      &mkp LCLK       &none            &msc SCRL_UP     &msc SCRL_LEFT   &mmv MOVE_UP     &msc SCRL_RIGHT   &none    &none
         // row 2
         &trans   &mo LR_MOUSE_FAST   &kp LALT      &kp LSHFT      &kp LCTRL       &none            &msc SCRL_DOWN   &mmv MOVE_LEFT   &mmv MOVE_DOWN   &mmv MOVE_RIGHT   &none    &trans
         // row 3
         &trans   &mo LR_MOUSE_SLOW   &kp KEY_CUT   &kp KEY_COPY   &kp KEY_PASTE   &none            &none            &mkp MB4         &mkp MB5         &none             &trans   &trans
         // thumb row
-        &trans   &trans   &trans                                                                   &mkp RCLK   &mkp LCLK   &mkp MCLK
+        &trans   &trans   &trans                                                                   &mkp LCLK   &mkp MCLK   &mkp RCLK      
       >;
     };
 
