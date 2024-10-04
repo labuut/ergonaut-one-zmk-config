@@ -423,7 +423,7 @@
         // row 2
         // &trans      &kp LGUI     &lmt LALT AT   &lmt LSHFT EXCL   &lmt LCTRL QMARK   &none                &kp EQUAL   &rmt RCTRL MINUS   &rmt RSHFT PLUS   &rmt RALT COLON   &kp LGUI SEMI   &trans
         // &kp TAB   &lmt LGUI A   &lmt LALT S   &lmt LSHFT D   &lmt LCTRL F   &kp G                      &kp H   &rmt RCTRL J                &rmt RSHFT K          &rmt RALT L       &kp LGUI   &kp BSPC
-        &trans      &none        &kp AT     &kp EXCL   &kp QMARK   &none                               &kp EQUAL   &kp MINUS        &kp PLUS         &kp COLON   &kp SEMI   &trans
+        &trans      &kp LGUI        &lmt LALT AT     &lmt LSHFT EXCL   &lmt LCTRL QMARK   &none                               &kp EQUAL   &kp MINUS        &kp PLUS         &kp COLON   &kp SEMI   &trans
         // row 3
         &trans      &none        &kp DLLR       &none             &none              &none                &none       &L_PAR_BRC_BKT     &R_PAR_BRC_BKT    &kp LT            &kp GT          &trans
         // thumb row
