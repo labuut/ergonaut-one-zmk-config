@@ -316,7 +316,7 @@
       compatible = "zmk,behavior-mod-morph";
       label = "EN_RU";
       #binding-cells = <0>;
-      bindings = <&kp U_TO_RUS_SCUT>, <&TO_MAIN_RU>;
+      bindings = <&TO_MAIN_EN>, <&TO_MAIN_RU>;
       mods = <(MOD_LCTL)>;
     };
     DOT_RU: DOT_RU {
@@ -399,7 +399,7 @@
         // row 3
         &none     &kp Z         &kp X         &kp C          &kp V          &kp B            &kp N   &kp M   &none   &none   &kp COMMA   &kp DOT
         // thumb row
-        &kp ENTER   &mo LR_MOUSE   &lt LR_NUMS SPACE                                         &lt LR_NAV SPACE   &mo LR_WILDS   &lt LR_MEDIA ENTER
+        &lt LR_FN ENTER   &mo LR_MOUSE   &lt LR_NUMS SPACE                                   &lt LR_NAV SPACE   &mo LR_WILDS   &lt LR_MEDIA ENTER
       >;
     };
     
@@ -436,7 +436,7 @@
         // row 2
         &trans   &kp LGUI    &kp LALT   &kp LSHFT   &kp LCTRL   &none            &none   &kp N4   &kp N5   &kp N6   &kp N0   &trans
         // row 3
-        &trans   &mo LR_FN   &none      &none       &none       &none            &none   &kp N1   &kp N2   &kp N3   &trans   &trans
+        &trans   &none       &none      &none       &none       &none            &none   &kp N1   &kp N2   &kp N3   &trans   &trans
         // thumb row
         &trans   &trans   &trans                                                 &trans   &trans   &trans
       >;
