@@ -375,14 +375,14 @@
       timeout-ms = <100>;
       key-positions = <0 LEFT_THUMB_KEYS>;
       layers = <LR_MAIN_EN LR_MAIN_RU>; 
-      bindings = <&mo LR_SERVICE>;
+      bindings = <&to LR_SERVICE>;
     };
     // LR_SERVICE. Right half: top right + all RIGHT_THUMB_KEYS
     to_serv_right {
       timeout-ms = <100>;
       key-positions = <11 RIGHT_THUMB_KEYS>;
       layers = <LR_MAIN_EN LR_MAIN_RU>; 
-      bindings = <&mo LR_SERVICE>;
+      bindings = <&to LR_SERVICE>;
     };
   };
 };
