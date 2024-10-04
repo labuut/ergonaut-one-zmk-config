@@ -238,7 +238,7 @@
       wait-ms = <10>;
       tap-ms = <30>;
       bindings =
-        <&LAYOUT_RU>,
+        <&kp U_TO_RUS_SCUT>,
         <&to LR_MAIN_RU>;
     };
     WILDS_RU: WILDS_RU {
@@ -252,7 +252,7 @@
         <&to LR_WILDS>,
         <&macro_pause_for_release>,
         <&to LR_MAIN_RU>,
-        <&LAYOUT_RU>;
+        <&kp U_TO_RUS_SCUT>;
     };
     NUMBER_RU: NUMBER_RU {
       label = "ZM_NUMBER_RU";
@@ -261,7 +261,7 @@
       wait-ms = <10>;
       tap-ms = <30>;
       bindings =
-        <&LAYOUT_RU>,
+        <&kp U_TO_RUS_SCUT>,
         <&kp LS(N3)>,
         <&kp U_TO_ENG_SCUT>;
     };
