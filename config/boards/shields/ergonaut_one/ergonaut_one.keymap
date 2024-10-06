@@ -12,10 +12,10 @@
 #define LR_FN         4
 #define LR_NAV        5
 #define LR_MOUSE      6
-#define LR_MOUSE_FAST 7
-#define LR_MOUSE_SLOW 8
-#define LR_MEDIA      9
-#define LR_SERVICE    10
+// #define LR_MOUSE_FAST 7
+// #define LR_MOUSE_SLOW 8
+#define LR_MEDIA      7
+#define LR_SERVICE    8
 
 #define ZMK_MOUSE_DEFAULT_MOVE_VAL 600  // 600
 #define ZMK_MOUSE_DEFAULT_SCRL_VAL 20   // 10
@@ -26,10 +26,6 @@
 
 #define U_TO_ENG_SCUT LA(LS(N8))
 #define U_TO_RUS_SCUT LA(LS(N9))
-
-#define KEY_CUT LC(X)
-#define KEY_COPY LC(C)
-#define KEY_PASTE LC(V)
 
 #define LEFT_HAND_KEYS \
   0  1  2  3  4  5     \
@@ -101,104 +97,84 @@
       // bindings = <hold>, <tap>;
       bindings = <&kp>, <&kp>;
     };
-    // lsht: left_shift_tap {
+    // lmt: left_mod_tap {
     //   compatible = "zmk,behavior-hold-tap";
     //   flavor = "balanced";
     //   hold-trigger-key-positions = <RIGHT_HAND_KEYS RIGHT_THUMB_KEYS>;
     //   hold-trigger-on-release; // for combining HRMs
     //   tapping-term-ms = <U_TAPPING_TERM>;
     //   quick-tap-ms = <U_QUICK_TAP>;
+    //   require-prior-idle-ms = <U_STREAK_DECAY>;
     //   #binding-cells = <2>;
     //   bindings = <&kp>, <&kp>;
     // };
-    lmt: left_mod_tap {
-      compatible = "zmk,behavior-hold-tap";
-      flavor = "balanced";
-      hold-trigger-key-positions = <RIGHT_HAND_KEYS RIGHT_THUMB_KEYS>;
-      hold-trigger-on-release; // for combining HRMs
-      tapping-term-ms = <U_TAPPING_TERM>;
-      quick-tap-ms = <U_QUICK_TAP>;
-      require-prior-idle-ms = <U_STREAK_DECAY>;
-      #binding-cells = <2>;
-      bindings = <&kp>, <&kp>;
-    };
-    // rsht: right_shift_tap {
+    // rmt: right_mod_tap {
     //   compatible = "zmk,behavior-hold-tap";
     //   flavor = "balanced";
     //   hold-trigger-key-positions = <LEFT_HAND_KEYS LEFT_THUMB_KEYS>;
     //   hold-trigger-on-release; // for combining HRMs
     //   tapping-term-ms = <U_TAPPING_TERM>;
     //   quick-tap-ms = <U_QUICK_TAP>;
+    //   require-prior-idle-ms = <U_STREAK_DECAY>;
     //   #binding-cells = <2>;
     //   bindings = <&kp>, <&kp>;
     // };
-    rmt: right_mod_tap {
-      compatible = "zmk,behavior-hold-tap";
-      flavor = "balanced";
-      hold-trigger-key-positions = <LEFT_HAND_KEYS LEFT_THUMB_KEYS>;
-      hold-trigger-on-release; // for combining HRMs
-      tapping-term-ms = <U_TAPPING_TERM>;
-      quick-tap-ms = <U_QUICK_TAP>;
-      require-prior-idle-ms = <U_STREAK_DECAY>;
-      #binding-cells = <2>;
-      bindings = <&kp>, <&kp>;
-    };
-    // Mouse 
-    //  acceleration
-    fmmv: fast_mouse_move {
-      compatible = "zmk,behavior-input-two-axis";
-      #binding-cells = <1>;
-      x-input-code = <INPUT_REL_X>;
-      y-input-code = <INPUT_REL_Y>;
-      acceleration-exponent = <1>;  // 1
-      time-to-max-speed-ms = <300>; // 300
-      delay-ms = <0>;
-      trigger-period-ms = <8>;      // 16
-    };
-    fmsc: fast_mouse_scroll {
-      compatible = "zmk,behavior-input-two-axis";
-      #binding-cells = <1>;
-      x-input-code = <INPUT_REL_HWHEEL>;
-      y-input-code = <INPUT_REL_WHEEL>;
-      acceleration-exponent = <1>;  // 0
-      time-to-max-speed-ms = <40>;  // 300
-      delay-ms = <0>;
-      trigger-period-ms = <8>;      // 16
-    };
-    //  deceleration
-    smmv: slow_mouse_move {
-      compatible = "zmk,behavior-input-two-axis";
-      #binding-cells = <1>;
-      x-input-code = <INPUT_REL_X>;
-      y-input-code = <INPUT_REL_Y>;
-      acceleration-exponent = <1>;  // 1
-      time-to-max-speed-ms = <300>; // 300
-      delay-ms = <0>;
-      trigger-period-ms = <8>;      // 16
-    };
+    // // Mouse 
+    // //  acceleration
+    // fmmv: fast_mouse_move {
+    //   compatible = "zmk,behavior-input-two-axis";
+    //   #binding-cells = <1>;
+    //   x-input-code = <INPUT_REL_X>;
+    //   y-input-code = <INPUT_REL_Y>;
+    //   acceleration-exponent = <1>;  // 1
+    //   time-to-max-speed-ms = <300>; // 300
+    //   delay-ms = <0>;
+    //   trigger-period-ms = <8>;      // 16
+    // };
+    // fmsc: fast_mouse_scroll {
+    //   compatible = "zmk,behavior-input-two-axis";
+    //   #binding-cells = <1>;
+    //   x-input-code = <INPUT_REL_HWHEEL>;
+    //   y-input-code = <INPUT_REL_WHEEL>;
+    //   acceleration-exponent = <1>;  // 0
+    //   time-to-max-speed-ms = <40>;  // 300
+    //   delay-ms = <0>;
+    //   trigger-period-ms = <8>;      // 16
+    // };
+    // //  deceleration
+    // smmv: slow_mouse_move {
+    //   compatible = "zmk,behavior-input-two-axis";
+    //   #binding-cells = <1>;
+    //   x-input-code = <INPUT_REL_X>;
+    //   y-input-code = <INPUT_REL_Y>;
+    //   acceleration-exponent = <1>;  // 1
+    //   time-to-max-speed-ms = <300>; // 300
+    //   delay-ms = <0>;
+    //   trigger-period-ms = <8>;      // 16
+    // };
   };
 
-  // Mouse 
-  //  acceleration
-  fmmv_input_listener: fmmv_input_listener {
-    compatible = "zmk,input-listener";
-    device = <&fmmv>;
-    scale-multiplier = <2>;
-    scale-divisor = <1>;
-  };
-  fmsc_input_listener: fmsc_input_listener {
-    compatible = "zmk,input-listener";
-    device = <&fmsc>;
-    scale-multiplier = <2>;
-    scale-divisor = <1>;
-  };
-  //  deceleration
-  smmv_input_listener: smmv_input_listener {
-    compatible = "zmk,input-listener";
-    device = <&smmv>;
-    scale-multiplier = <1>;
-    scale-divisor = <2>;
-  };
+  // // Mouse 
+  // //  acceleration
+  // fmmv_input_listener: fmmv_input_listener {
+  //   compatible = "zmk,input-listener";
+  //   device = <&fmmv>;
+  //   scale-multiplier = <2>;
+  //   scale-divisor = <1>;
+  // };
+  // fmsc_input_listener: fmsc_input_listener {
+  //   compatible = "zmk,input-listener";
+  //   device = <&fmsc>;
+  //   scale-multiplier = <2>;
+  //   scale-divisor = <1>;
+  // };
+  // //  deceleration
+  // smmv_input_listener: smmv_input_listener {
+  //   compatible = "zmk,input-listener";
+  //   device = <&smmv>;
+  //   scale-multiplier = <1>;
+  //   scale-divisor = <2>;
+  // };
 };
 
 / {
@@ -393,119 +369,119 @@
     LR_MAIN_EN {
       bindings = <
         // row 1
-        &kp ESC   &kp Q         &kp W         &kp E          &kp R          &kp T            &kp Y   &kp U   &kp I   &kp O   &kp P       &none
+        &kp ESC        &kp Q            &kp W   &kp E         &kp R         &kp T            &kp Y   &kp U   &kp I   &kp O   &kp P       &none
         // row 2
-        &kp TAB   &lmt LGUI A   &lmt LALT S   &lmt LSHFT D   &lmt LCTRL F   &kp G            &kp H   &rmt RCTRL J   &rmt LSHFT K   &rmt LALT L   &kp LGUI   &kp BSPC
+        &mt LGUI TAB   &kp A            &kp S   &kp D         &kp F         &kp G            &kp H   &kp J   &kp K   &kp L   &none       &kp BSPC
         // row 3
-        &none     &kp Z         &kp X         &kp C          &kp V          &kp B            &kp N   &kp M   &none   &none   &kp COMMA   &kp DOT
+        &kp LCTRL      &lt LR_MOUSE Z   &kp X   &lt LR_FN C   &lt LR_FN V   &kp B            &kp N   &kp M   &none   &none   &kp COMMA   &kp DOT
         // thumb row
-        &lt LR_FN ENTER   &mo LR_MOUSE   &lt LR_NUMS SPACE                                   &lt LR_NAV SPACE   &mo LR_WILDS   &lt LR_MEDIA ENTER
+        &mt LALT ENTER   &kp LSHFT   &lt LR_NUMS SPACE                                       &lt LR_NAV SPACE   &mo LR_WILDS   &lt LR_MEDIA ENTER
       >;
     };
     
     LR_MAIN_RU {
       bindings = <
         // row 1
-        &trans   &trans   &trans   &trans   &trans   &cmt GRAVE T            &kp Y        &trans        &trans      &trans    &trans           &kp LBKT
+        &trans   &kp Q   &kp W   &kp E   &kp R   &cmt GRAVE T            &kp Y   &kp U          &kp I       &kp O     &kp P       &kp LBKT
         // row 2
-        &trans   &trans   &trans   &trans   &trans   &trans                  &cmt SQT H   &trans        &trans      &trans    &rmt LGUI SEMI   &trans
+        &trans   &kp A   &kp S   &kp D   &kp F   &kp G                   &kp H   &cmt SQT J     &kp K       &kp L     &kp SEMI    &trans
         // row 3
-        &trans   &trans   &trans   &trans   &trans   &trans                  &trans       &cmt RBKT M   &kp COMMA   &kp DOT   &COMMA_RU        &DOT_RU
+        &trans   &kp Z   &kp X   &kp C   &kp V   &kp B                   &kp N   &cmt RBKT M    &kp COMMA   &kp DOT   &COMMA_RU   &DOT_RU
         // thumb row
-        &trans   &trans   &trans                                             &trans   &WILDS_RU   &trans
+        &trans   &trans   &trans                                         &trans   &WILDS_RU   &trans
       >;
     };
 
     LR_WILDS {
       bindings = <
         // row 1
-        &kp GRAVE   &NUMBER_RU   &kp HASH       &kp PIPE          &kp AMPS           &kp CARET            &kp PRCNT   &FSLH_BSLH         &kp ASTRK         &kp SQT           &kp DQT          &none
+        &kp GRAVE   &NUMBER_RU   &kp HASH   &kp PIPE   &kp AMPS    &kp CARET            &kp PRCNT   &FSLH_BSLH       &kp ASTRK        &kp SQT     &kp DQT    &none
         // row 2
-        &trans      &kp LGUI     &lmt LALT AT   &lmt LSHFT EXCL   &lmt LCTRL QMARK   &none                &kp EQUAL   &rmt LCTRL MINUS   &rmt LSHFT PLUS   &rmt LALT COLON   &rmt LGUI SEMI   &trans
+        &trans      &none        &kp AT     &kp EXCL   &kp QMARK   &none                &kp EQUAL   &kp MINUS        &kp PLUS         &kp COLON   &kp SEMI   &trans
         // row 3
-        &trans      &none        &kp DLLR       &none             &none              &none                &none       &L_PAR_BRC_BKT     &R_PAR_BRC_BKT    &kp LT            &kp GT          &trans
+        &trans      &none        &kp DLLR   &none      &none       &none                &none       &L_PAR_BRC_BKT   &R_PAR_BRC_BKT   &kp LT      &kp GT     &trans
         // thumb row
-        &trans   &trans   &trans                                                                          &trans   &trans   &trans
+        &trans   &trans   &trans                                                        &trans   &trans   &trans
       >;
     };
     
     LR_NUMS {
       bindings = <
         // row 1
-        &trans   &none       &none      &none       &none       &none            &none   &kp N7   &kp N8   &kp N9   &none    &none
+        &trans   &trans   &trans    &trans    &trans   &trans            &none   &kp N7   &kp N8   &kp N9   &none    &none
         // row 2
-        &trans   &kp LGUI    &kp LALT   &kp LSHFT   &kp LCTRL   &none            &none   &kp N4   &kp N5   &kp N6   &kp N0   &trans
+        &trans   &trans   &trans    &trans    &trans   &trans            &none   &kp N4   &kp N5   &kp N6   &kp N0   &trans
         // row 3
-        &trans   &none       &none      &none       &none       &none            &none   &kp N1   &kp N2   &kp N3   &trans   &trans
+        &trans   &trans   &trans    &trans    &trans   &trans            &none   &kp N1   &kp N2   &kp N3   &trans   &trans
         // thumb row
-        &trans   &trans   &trans                                                 &trans   &trans   &trans
+        &trans   &trans   &trans                                         &trans   &trans   &trans
       >;
     };
 
     LR_FN {
       bindings = <
         // row 1
-        &trans   &none       &none      &none       &none       &none            &none   &kp F7   &kp F8   &kp F9   &kp F10   &none
+        &trans   &trans   &trans    &trans    &trans   &trans            &none   &kp F7   &kp F8   &kp F9   &kp F10   &none
         // row 2
-        &trans   &kp LGUI    &kp LALT   &kp LSHFT   &kp LCTRL   &none            &none   &kp F4   &kp F5   &kp F6   &kp F11   &trans
+        &trans   &trans   &trans    &trans    &trans   &trans            &none   &kp F4   &kp F5   &kp F6   &kp F11   &trans
         // row 3
-        &trans   &none       &none      &none       &none       &none            &none   &kp F1   &kp F2   &kp F3   &kp F12   &none
+        &trans   &trans   &trans    &trans    &trans   &trans            &none   &kp F1   &kp F2   &kp F3   &kp F12   &none
         // thumb row
-        &trans   &trans   &trans                                                 &trans   &trans   &trans
+        &trans   &trans   &trans                                         &trans   &trans   &trans
       >;
     };
     
     LR_NAV {
       bindings = <
         // row 1
-        &trans   &none       &none         &none          &none           &none            &kp PG_UP   &kp HOME     &kp UP       &kp END     &none       &none
+        &trans   &trans   &trans    &trans    &trans   &trans            &kp PG_UP   &kp HOME   &kp UP     &kp END     &kp C_NEXT   &kp K_APP
         // row 2
-        &trans   &kp LGUI    &kp LALT      &kp LSHFT      &kp LCTRL       &none            &kp PG_DN   &kp LEFT     &kp DOWN     &kp RIGHT   &none       &trans
+        &trans   &trans   &trans    &trans    &trans   &trans            &kp PG_DN   &kp LEFT   &kp DOWN   &kp RIGHT   &kp C_PREV   &trans
         // row 3
-        &trans   &none       &kp KEY_CUT   &kp KEY_COPY   &kp KEY_PASTE   &none            &none       &kp C_PREV   &kp C_NEXT   &none       &kp K_APP   &trans
+        &trans   &trans   &trans    &trans    &trans   &trans            &none       &none      &none      &trans      &trans       &trans
         // thumb row
-        &trans   &trans   &trans                                                           &trans   &trans   &trans
+        &trans   &trans   &trans                                         &trans   &trans   &trans
       >;
     };
 
     LR_MOUSE {
       bindings = <
         // row 1
-        &trans   &trans              &none         &none          &none           &none            &msc SCRL_UP     &msc SCRL_LEFT   &mmv MOVE_UP     &msc SCRL_RIGHT   &none    &none
+        &trans   &trans   &trans    &trans    &trans   &trans            &msc SCRL_UP     &msc SCRL_LEFT   &mmv MOVE_UP     &msc SCRL_RIGHT   &mkp MB5   &none
         // row 2
-        &trans   &mo LR_MOUSE_SLOW   &kp LALT      &kp LSHFT      &kp LCTRL       &none            &msc SCRL_DOWN   &mmv MOVE_LEFT   &mmv MOVE_DOWN   &mmv MOVE_RIGHT   &none    &trans
+        &trans   &trans   &trans    &trans    &trans   &trans            &msc SCRL_DOWN   &mmv MOVE_LEFT   &mmv MOVE_DOWN   &mmv MOVE_RIGHT   &mkp MB4   &trans
         // row 3
-        &trans   &mo LR_MOUSE_FAST   &kp KEY_CUT   &kp KEY_COPY   &kp KEY_PASTE   &none            &none            &mkp MB4         &mkp MB5         &none             &trans   &trans
-        // thumb row
-        &trans   &trans   &trans                                                                   &mkp LCLK   &mkp MCLK   &mkp RCLK      
+        &trans   &trans   &trans    &trans    &trans   &trans            &none            &mkp LCLK        &mkp MCLK        &mkp RCLK         &trans     &trans
+        // thumb row            
+        &trans   &trans   &trans                                         &trans   &trans   &trans
       >;
     };
 
-    LR_MOUSE_FAST {
-      bindings = <
-        // row 1
-        &trans   &trans   &trans   &trans   &trans   &trans            &fmsc SCRL_UP     &fmsc SCRL_LEFT   &fmmv MOVE_UP     &fmsc SCRL_RIGHT   &trans   &trans
-        // row 2
-        &trans   &trans   &trans   &trans   &trans   &trans            &fmsc SCRL_DOWN   &fmmv MOVE_LEFT   &fmmv MOVE_DOWN   &fmmv MOVE_RIGHT   &trans   &trans
-        // row 3  
-        &trans   &trans   &trans   &trans   &trans   &trans            &trans            &trans            &trans            &trans             &trans   &trans
-        // thumb row
-        &trans   &trans   &trans                                       &trans   &trans   &trans
-      >;
-    };
+    // LR_MOUSE_FAST {
+    //   bindings = <
+    //     // row 1
+    //     &trans   &trans   &trans   &trans   &trans   &trans            &fmsc SCRL_UP     &fmsc SCRL_LEFT   &fmmv MOVE_UP     &fmsc SCRL_RIGHT   &trans   &trans
+    //     // row 2
+    //     &trans   &trans   &trans   &trans   &trans   &trans            &fmsc SCRL_DOWN   &fmmv MOVE_LEFT   &fmmv MOVE_DOWN   &fmmv MOVE_RIGHT   &trans   &trans
+    //     // row 3  
+    //     &trans   &trans   &trans   &trans   &trans   &trans            &trans            &trans            &trans            &trans             &trans   &trans
+    //     // thumb row
+    //     &trans   &trans   &trans                                       &trans   &trans   &trans
+    //   >;
+    // };
 
-    LR_MOUSE_SLOW {
-      bindings = <
-        // row 1
-        &trans   &trans   &trans   &trans   &trans   &trans            &trans   &trans            &smmv MOVE_UP     &trans             &trans   &trans
-        // row 2
-        &trans   &trans   &trans   &trans   &trans   &trans            &trans   &smmv MOVE_LEFT   &smmv MOVE_DOWN   &smmv MOVE_RIGHT   &trans   &trans
-        // row 3
-        &trans   &trans   &trans   &trans   &trans   &trans            &trans   &trans            &trans            &trans             &trans   &trans
-        // thumb row
-        &trans   &trans   &trans                                       &trans   &trans   &trans
-      >;
-    };
+    // LR_MOUSE_SLOW {
+    //   bindings = <
+    //     // row 1
+    //     &trans   &trans   &trans   &trans   &trans   &trans            &trans   &trans            &smmv MOVE_UP     &trans             &trans   &trans
+    //     // row 2
+    //     &trans   &trans   &trans   &trans   &trans   &trans            &trans   &smmv MOVE_LEFT   &smmv MOVE_DOWN   &smmv MOVE_RIGHT   &trans   &trans
+    //     // row 3
+    //     &trans   &trans   &trans   &trans   &trans   &trans            &trans   &trans            &trans            &trans             &trans   &trans
+    //     // thumb row
+    //     &trans   &trans   &trans                                       &trans   &trans   &trans
+    //   >;
+    // };
 
     LR_MEDIA {
       bindings = <
