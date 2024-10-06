@@ -248,7 +248,7 @@
         // row 3
         &kp LCTRL      &lt LR_FN Z   &kp X   &kp C   &kp V   &kp B            &kp N   &kp M   &none   &none   &kp COMMA   &kp DOT
         // thumb row
-        &mt LALT ENTER   &kp LSHFT   &lt LR_NUMS SPACE                        &lt LR_NAV SPACE   &mo LR_WILDS   &lt LR_SPEC ENTER
+        &mt LALT ENTER   &kp LSHFT   &lt LR_NUMS SPACE                        &lt LR_NAV SPACE   &mo LR_WILDS   &lt LR_MEDIA ENTER
       >;
     };
     
