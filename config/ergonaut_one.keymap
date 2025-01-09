@@ -16,6 +16,7 @@
 // key shortcuts
 #define EN_LAYOUT_SCUT LA(LS(N8))
 #define RU_LAYOUT_SCUT LA(LS(N9))
+#define RU_NUMBER_SCUT LS(N3)
 #define RU_COMMA_SCUT LS(FSLH)
 #define RU_DOT_KEY FSLH
 
@@ -169,9 +170,9 @@
       wait-ms = <10>;
       tap-ms = <30>;
       bindings =
-        <&LAYOUT_RU>,
-        <&kp LS(N3)>,
-        <&LAYOUT_EN>;
+        <&RU_LAYOUT>,
+        <&kp RU_NUMBER_SCUT>,
+        <&EN_LAYOUT>;
     };
     // service layer test output
     SRVC_TEST: SRVC_TEST {
