@@ -28,7 +28,7 @@
         // row 2
         &mt LWIN TAB   &kp A   &kp S   &kp D         &kp F   &kp G              &kp H   &kp J   &kp K   &kp L   &none       &kp BSPC
         // row 3
-        &kp LCTRL      &kp Z   &kp X   &lt LR_FN C   &kp V   &B_SERV            &N_SERV   &kp M   &none   &none   &kp COMMA   &kp DOT
+        &kp LCTRL      &kp Z   &kp X   &lt LR_FN C   &kp V   &kp B            &kp N   &kp M   &none   &none   &kp COMMA   &kp DOT
         // thumb row
         &mt LALT ENTER   &kp LSHFT   &lt LR_NUMS SPACE                          &lt LR_NAV SPACE   &mo LR_WILDS   &lt LR_MEDIA ENTER
         // &mt LALT ENTER   &kp LSHFT   &lt LR_NUMS SPACE                          &lt LR_NAV SPACE   &mo LR_WILDS   &lt LR_MEDIA ENTER
