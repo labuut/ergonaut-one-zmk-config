@@ -7,14 +7,31 @@
 #include <behaviors.dtsi>
 #include <dt-bindings/zmk/keys.h>
 #include <dt-bindings/zmk/bt.h>
+#include <dt-bindings/zmk/outputs.h>
+#include <dt-bindings/zmk/pointing.h>
 
 #define LR_MAIN_EN  0
 #define LR_MAIN_RU  1
-#define LR_NUMS     2
-#define LR_WILDS    3
+#define LR_WILDS    2
+#define LR_NUMS     3
+#define LR_FN       4
 #define LR_NAV      4
-#define LR_SPEC     5
-#define LR_SERV     6
+#define LR_MEDIA    6
+#define LR_SERV     7
+
+#define LEFT_HAND_KEYS \
+  0  1  2  3  4  5     \
+  12 13 14 15 16 17    \
+  24 25 26 27 28 29
+#define LEFT_THUMB_KEYS \
+  36 37 38 
+
+#define RIGHT_HAND_KEYS \
+  6  7  8  9 10 11      \
+  18 19 20 21 22 23     \
+  30 31 32 33 34 35
+#define RIGHT_THUMB_KEYS \
+  39 40 41
 
 &lt { quick_tap_ms = <100>; };
 &mt { quick-tap-ms = <400>; };
@@ -29,8 +46,7 @@
 / {
   // tap mods
   behaviors {
-      // // NOTE: example, "LR_WILDS_WITH 0 TAB". 0 is dummy argument
-      // // https://zmk.dev/docs/behaviors/hold-tap#using-different-behavior-types-with-hold-taps
+      // // NOTE: example, "LR_WILDS_WITH 0 TAB". 0 is dummy argument: https://zmk.dev/docs/behaviors/hold-tap#using-different-behavior-types-with-hold-taps
       // LR_WILDS_WITH: LR_WILDS_WITH {
       //     compatible = "zmk,behavior-hold-tap";
       //     label = "LR_WILDS_WITH";
@@ -52,6 +68,20 @@
       // bindings = <hold>, <tap>;
       bindings = <&kp>, <&kp>;
     };
+
+    B_SERV: B_SERV {
+      compatible = "zmk,behavior-tap-dance";
+      #binding-cells = <0>;
+      tapping-term-ms = <200>;
+      bindings = <&kp B>, <&kp B>, <&kp B>, <&kp B>, <&kp B>, <&kp B>, <&kp B>, <&kp B>, <&kp B>, <&to LR_SERV>;
+    };
+
+    N_SERV: N_SERV {
+      compatible = "zmk,behavior-tap-dance";
+      #binding-cells = <0>;
+      tapping-term-ms = <200>;
+      bindings = <&kp N>, <&kp N>, <&kp N>, <&kp N>, <&kp N>, <&kp N>, <&kp N>, <&kp N>, <&kp N>, <&to LR_SERV>;
+    };
   };
 };
 
@@ -66,15 +96,6 @@
       bindings =
         <&kp LA(LS(N8))>; // <&kp CAPS>;
     };
-    LAYOUT_RU: LAYOUT_RU {
-      label = "ZM_LAYOUT_RU";
-      compatible = "zmk,behavior-macro";
-      #binding-cells = <0>;
-      wait-ms = <10>;
-      tap-ms = <30>;
-      bindings =
-        <&kp LA(LS(N9))>; // <&kp LS(CAPS)>;
-    };
     TO_MAIN_EN: TO_MAIN_EN {
       label = "ZM_TO_MAIN_EN";
       compatible = "zmk,behavior-macro";
@@ -84,6 +105,15 @@
       bindings =
         <&LAYOUT_EN>,
         <&to LR_MAIN_EN>;
+    };
+    LAYOUT_RU: LAYOUT_RU {
+      label = "ZM_LAYOUT_RU";
+      compatible = "zmk,behavior-macro";
+      #binding-cells = <0>;
+      wait-ms = <10>;
+      tap-ms = <30>;
+      bindings =
+        <&kp LA(LS(N9))>; // <&kp LS(CAPS)>;
     };
     TO_MAIN_RU: TO_MAIN_RU {
       label = "ZM_TO_MAIN_RU";
@@ -173,30 +203,29 @@
 };
 
 / {
-  // combos (indexes start from 0)
   combos {
     compatible = "zmk,combos";
-    // EN-RU layout: K + L
-    switch_lang_new {
+    // EN-RU layout switcher
+    switch_lang {
       timeout-ms = <20>;
-      key-positions = <20 21>;
-      layers = <LR_MAIN_EN LR_MAIN_RU LR_NUMS LR_WILDS LR_NAV>; 
+      key-positions = <20 21>; // K + L, indexes start from 0
+      layers = <LR_MAIN_EN LR_MAIN_RU>; 
       bindings = <&EN_RU>;
     };
-    // LR_SERVICE. Left half: top left (Esc) + right bottom (Space)
-    to_serv_left {
-      timeout-ms = <50>;
-      key-positions = <0 38>;
-      layers = <LR_MAIN_EN LR_MAIN_RU>; 
-      bindings = <&mo LR_SERV>;
-    };
-    // LR_SERVICE. Right half: top right + left bottom (Space)
-    to_serv_right {
-      timeout-ms = <50>;
-      key-positions = <11 39>;
-      layers = <LR_MAIN_EN LR_MAIN_RU>; 
-      bindings = <&mo LR_SERV>;
-    };
+    // // LR_SERVICE. Left half: top left (Esc) + right bottom (Space)
+    // to_serv_left {
+    //   timeout-ms = <50>;
+    //   key-positions = <0 38>;
+    //   layers = <LR_MAIN_EN LR_MAIN_RU>; 
+    //   bindings = <&mo LR_SERV>;
+    // };
+    // // LR_SERVICE. Right half: top right + left bottom (Space)
+    // to_serv_right {
+    //   timeout-ms = <50>;
+    //   key-positions = <11 39>;
+    //   layers = <LR_MAIN_EN LR_MAIN_RU>; 
+    //   bindings = <&mo LR_SERV>;
+    // };
   };
 };
 
@@ -206,39 +235,26 @@
     LR_MAIN_EN {
       bindings = <
         // row 1
-        &kp ESC        &kp Q   &kp W   &kp E   &kp R   &kp T            &kp Y   &kp U   &kp I   &kp O   &kp P       &none
+        &kp ESC        &kp Q   &kp W   &kp E         &kp R   &kp T              &kp Y   &kp U   &kp I   &kp O   &kp P       &none
         // row 2
-        &mt LWIN TAB   &kp A   &kp S   &kp D   &kp F   &kp G            &kp H   &kp J   &kp K   &kp L   &none       &kp BSPC
+        &mt LWIN TAB   &kp A   &kp S   &kp D         &kp F   &kp G              &kp H   &kp J   &kp K   &kp L   &none       &kp BSPC
         // row 3
-        &kp LCTRL      &kp Z   &kp X   &kp C   &kp V   &kp B            &kp N   &kp M   &none   &none   &kp COMMA   &kp DOT
+        &kp LCTRL      &kp Z   &kp X   &lt LR_FN C   &kp V   &B_SERV            &N_SERV   &kp M   &none   &none   &kp COMMA   &kp DOT
         // thumb row
-        &mt LALT ENTER   &kp LSHFT   &lt LR_NUMS SPACE                  &lt LR_NAV SPACE   &mo LR_WILDS   &lt LR_SPEC ENTER
+        &mt LALT ENTER   &kp LSHFT   &lt LR_NUMS SPACE                          &lt LR_NAV SPACE   &mo LR_WILDS   &lt LR_MEDIA ENTER
       >;
     };
     
     LR_MAIN_RU {
       bindings = <
         // row 1
-        &trans   &kp Q   &kp W   &kp E   &kp R   &cmt GRAVE T            &kp Y   &kp U          &kp I       &kp O     &kp P       &kp LBKT
+        &trans   &kp Q   &kp W   &kp E         &kp R   &cmt GRAVE T            &kp Y   &kp U          &kp I       &kp O     &kp P       &kp LBKT
         // row 2
-        &trans   &kp A   &kp S   &kp D   &kp F   &kp G                   &kp H   &cmt SQT J     &kp K       &kp L     &kp SEMI    &trans
+        &trans   &kp A   &kp S   &kp D         &kp F   &kp G                   &kp H   &cmt SQT J     &kp K       &kp L     &kp SEMI    &trans
         // row 3
-        &trans   &kp Z   &kp X   &kp C   &kp V   &kp B                   &kp N   &cmt RBKT M    &kp COMMA   &kp DOT   &COMMA_RU   &DOT_RU
+        &trans   &kp Z   &kp X   &lt LR_FN C   &kp V   &B_SERV                 &N_SERV   &cmt RBKT M    &kp COMMA   &kp DOT   &COMMA_RU   &DOT_RU
         // thumb row
-        &trans   &trans   &trans                                         &trans   &WILDS_RU   &trans
-      >;
-    };
-    
-    LR_NUMS {
-      bindings = <
-        // row 1
-        &trans   &none   &kp F7   &kp F8   &kp F9   &kp F10            &none   &kp N7   &kp N8   &kp N9   &none    &none
-        // row 2
-        &trans   &none   &kp F4   &kp F5   &kp F6   &kp F11            &none   &kp N4   &kp N5   &kp N6   &kp N0   &trans
-        // row 3
-        &trans   &none   &kp F1   &kp F2   &kp F3   &kp F12            &none   &kp N1   &kp N2   &kp N3   &trans   &trans
-        // thumb row
-        &trans   &trans   &trans                                       &trans   &trans   &trans
+        &trans   &trans   &trans                                               &trans   &WILDS_RU   &trans
       >;
     };
     
@@ -255,20 +271,46 @@
       >;
     };
     
-    LR_NAV {
+    LR_NUMS {
       bindings = <
         // row 1
-        &trans   &trans   &trans    &trans    &trans   &trans            &kp PG_UP   &kp HOME   &kp UP     &kp END     &kp C_NEXT   &kp K_APP
+        &trans   &trans   &trans    &trans    &trans   &trans            &none   &kp N7   &kp N8   &kp N9   &none    &none
         // row 2
-        &trans   &trans   &trans    &trans    &trans   &trans            &kp PG_DN   &kp LEFT   &kp DOWN   &kp RIGHT   &kp C_PREV   &trans
+        &trans   &trans   &trans    &trans    &trans   &trans            &none   &kp N4   &kp N5   &kp N6   &kp N0   &trans
         // row 3
-        &trans   &trans   &trans    &trans    &trans   &trans            &none       &none      &none      &trans      &trans       &trans
+        &trans   &trans   &trans    &trans    &trans   &trans            &none   &kp N1   &kp N2   &kp N3   &trans   &trans
+        // thumb row
+        &trans   &trans   &trans                                         &trans   &trans   &trans
+      >;
+    };
+
+    LR_FN {
+      bindings = <
+        // row 1
+        &trans   &trans   &trans    &trans    &trans   &trans            &none   &kp F7   &kp F8   &kp F9   &kp F10   &none
+        // row 2
+        &trans   &trans   &trans    &trans    &trans   &trans            &none   &kp F4   &kp F5   &kp F6   &kp F11   &trans
+        // row 3
+        &trans   &trans   &trans    &trans    &trans   &trans            &none   &kp F1   &kp F2   &kp F3   &kp F12   &none
         // thumb row
         &trans   &trans   &trans                                         &trans   &trans   &trans
       >;
     };
     
-    LR_SPECIAL {
+    LR_NAV {
+      bindings = <
+        // row 1
+        &trans   &trans   &trans           &mmv MOVE_UP     &trans            &msc SCRL_UP              &kp PG_UP   &kp HOME    &kp UP      &kp END     &kp C_NEXT   &kp K_APP
+        // row 2
+        &trans   &trans   &mmv MOVE_LEFT   &mmv MOVE_DOWN   &mmv MOVE_RIGHT   &msc SCRL_DOWN            &kp PG_DN   &kp LEFT    &kp DOWN    &kp RIGHT   &kp C_PREV   &trans
+        // row 3
+        &trans   &trans   &trans           &trans           &trans            &trans                    &none       &mkp LCLK   &mkp MCLK   &mkp RCLK   &trans       &trans
+        // thumb row
+        &trans   &trans   &trans                                                                        &trans   &trans   &trans
+      >;
+    };
+    
+    LR_MEDIA {
       bindings = <
         // row 1
         &trans   &none   &none   &none   &none   &none            &none   &kp C_PP     &kp C_PREV     &kp C_NEXT     &none   &kp DEL
@@ -281,16 +323,16 @@
       >;
     };
 
-    LR_SERVICE {
+    LR_SERV {
       bindings = <
         // row 1
-        &none   &none   &none   &none   &none   &bootloader            &bootloader   &none          &none          &none          &none   &bt BT_CLR
+        &to LR_MAIN_EN   &none   &none   &none   &none   &bootloader            &bootloader   &none   &none   &none   &none          &to LR_MAIN_EN
         // row 2
-        &none   &none   &none   &none   &none   &sys_reset             &sys_reset    &bt BT_SEL 3   &bt BT_SEL 4   &bt BT_SEL 5   &none   &none
+        &none            &none   &none   &none   &none   &sys_reset             &sys_reset    &none   &none   &none   &none          &none
         // row 3
-        &none   &none   &none   &none   &none   &none                  &none         &bt BT_SEL 0   &bt BT_SEL 1   &bt BT_SEL 2   &none   &none 
+        &none            &none   &none   &none   &none   &SRVC_TEST             &SRVC_TEST    &BT_0   &BT_1   &BT_2   &out OUT_USB   &bt BT_CLR 
         // thumb row
-        &trans   &trans   &trans                                       &trans   &trans   &trans
+        &trans   &trans   &trans                                                &trans   &trans   &trans
       >;
     };
   };
