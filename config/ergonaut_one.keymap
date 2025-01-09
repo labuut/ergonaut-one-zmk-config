@@ -149,6 +149,39 @@
         <&kp LS(N3)>,
         <&LAYOUT_EN>;
     };
+    SRVC_TEST: SRVC_TEST {
+      label = "ZM_SRVC_TEST";
+      compatible = "zmk,behavior-macro";
+      #binding-cells = <0>;
+      wait-ms = <10>;
+      tap-ms = <30>;
+      bindings =
+          <&kp S>,<&kp E>,<&kp R>,<&kp V>,<&kp I>,<&kp C>,<&kp E>;
+    };
+    BT_0: bt_profile_macro_0 {
+      label = "BT_0";
+      compatible = "zmk,behavior-macro";
+      #binding-cells = <0>;
+      bindings = 
+          <&out OUT_BLE>,
+          <&bt BT_SEL 0>;
+    };
+    BT_1: bt_profile_macro_1 {
+      label = "BT_1";
+      compatible = "zmk,behavior-macro";
+      #binding-cells = <0>;
+      bindings =
+          <&out OUT_BLE>,
+          <&bt BT_SEL 1>;
+    };
+    BT_2: bt_profile_macro_2 {
+      label = "BT_2";
+      compatible = "zmk,behavior-macro";
+      #binding-cells = <0>;
+      bindings =
+          <&out OUT_BLE>,
+          <&bt BT_SEL 2>;
+    };
   };
 };
 
