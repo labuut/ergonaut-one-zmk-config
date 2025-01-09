@@ -3,6 +3,7 @@
 #include <dt-bindings/zmk/bt.h>
 #include <dt-bindings/zmk/pointing.h>
 
+// layers
 #define LR_MAIN_EN  0
 #define LR_MAIN_RU  1
 #define LR_WILDS    2
@@ -12,12 +13,17 @@
 #define LR_MEDIA    6
 #define LR_SERV     7
 
+// key shortcuts
+#define RU_COMMA_SCUT LS(FSLH)
+#define RU_DOT_KEY FSLH
+
+// tap global params
 &lt { quick_tap_ms = <100>; };
 &mt { quick-tap-ms = <400>; };
 &sl { release-after-ms = <1000>; };
 
+// tap mods
 / {
-  // tap mods
   behaviors {
       // // NOTE: example, "LR_WILDS_WITH 0 TAB". 0 is dummy argument: https://zmk.dev/docs/behaviors/hold-tap#using-different-behavior-types-with-hold-taps
       // LR_WILDS_WITH: LR_WILDS_WITH {
@@ -56,6 +62,27 @@
   };
 };
 
+// keys with mods
+/ {
+  behaviors {
+    COMMA_RU: COMMA_RU {
+      compatible = "zmk,behavior-mod-morph";
+      #binding-cells = <0>;
+      bindings = <&kp RU_COMMA_SCUT>, <&kp COMMA>;
+      mods = <(MOD_LCTL|MOD_LALT|MOD_LGUI)>;
+      keep-mods = <(MOD_LCTL|MOD_LALT|MOD_LGUI)>;
+    };
+    DOT_RU: DOT_RU {
+      compatible = "zmk,behavior-mod-morph";
+      label = "DOT_RU";
+      #binding-cells = <0>;
+      bindings = <&kp RU_DOT_KEY>, <&kp DOT>;
+      mods = <(MOD_LCTL|MOD_LALT|MOD_LGUI)>;
+      keep-mods = <(MOD_LCTL|MOD_LALT|MOD_LGUI)>;
+    };
+  };
+};
+
 / {
   keymap {
     compatible = "zmk,keymap";
@@ -76,12 +103,11 @@
     LR_MAIN_RU {
       bindings = <
         // row 1
-        &trans   &kp Q   &kp W   &kp E         &kp R   &cmt GRAVE T            &kp Y   &kp U          &kp I       &kp O     &kp P       &kp LBKT
+        &trans   &kp Q   &kp W   &kp E         &kp R   &cmt GRAVE T            &kp Y     &kp U          &kp I       &kp O     &kp P       &kp LBKT
         // row 2
-        &trans   &kp A   &kp S   &kp D         &kp F   &kp G                   &kp H   &cmt SQT J     &kp K       &kp L     &kp SEMI    &trans
+        &trans   &kp A   &kp S   &kp D         &kp F   &kp G                   &kp H     &cmt SQT J     &kp K       &kp L     &kp SEMI    &trans
         // row 3
-        &trans   &kp Z   &kp X   &lt LR_FN C   &kp V   &B_SERV                 &N_SERV   &cmt RBKT M    &kp COMMA   &kp DOT   &trans   &trans
-        // &trans   &kp Z   &kp X   &lt LR_FN C   &kp V   &B_SERV                 &N_SERV   &cmt RBKT M    &kp COMMA   &kp DOT   &COMMA_RU   &DOT_RU
+        &trans   &kp Z   &kp X   &lt LR_FN C   &kp V   &B_SERV                 &N_SERV   &cmt RBKT M    &kp COMMA   &kp DOT   &COMMA_RU   &DOT_RU
         // thumb row
         &trans   &trans   &trans                                               &trans   &trans   &trans
         // &trans   &trans   &trans                                               &trans   &WILDS_RU   &trans
