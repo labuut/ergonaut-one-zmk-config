@@ -16,6 +16,47 @@
 &mt { quick-tap-ms = <400>; };
 &sl { release-after-ms = <1000>; };
 
+/ {
+  // tap mods
+  behaviors {
+      // // NOTE: example, "LR_WILDS_WITH 0 TAB". 0 is dummy argument: https://zmk.dev/docs/behaviors/hold-tap#using-different-behavior-types-with-hold-taps
+      // LR_WILDS_WITH: LR_WILDS_WITH {
+      //     compatible = "zmk,behavior-hold-tap";
+      //     label = "LR_WILDS_WITH";
+      //     #binding-cells = <2>;
+      //     flavor = "hold-preferred";
+      //     tapping-term-ms = <150>;
+      //     // bindings = <hold>, <tap>;
+      //     bindings = <&WILDS_RU>, <&kp>;
+      // };
+
+    // cmt - custom mod-tap
+    // cmt: cmt {
+    //   compatible = "zmk,behavior-hold-tap";
+    //   label = "custom-mod-tap";
+    //   #binding-cells = <2>;
+    //   flavor = "tap-preferred";
+    //   tapping-term-ms = <200>;
+    //   quick-tap-ms = <200>;
+    //   // bindings = <hold>, <tap>;
+    //   bindings = <&kp>, <&kp>;
+    // };
+
+    B_SERV: B_SERV {
+      compatible = "zmk,behavior-tap-dance";
+      #binding-cells = <0>;
+      tapping-term-ms = <200>;
+      bindings = <&kp B>, <&kp B>, <&kp B>, <&kp B>, <&kp B>, <&kp B>, <&kp B>, <&kp B>, <&kp B>, <&to LR_SERV>;
+    };
+
+    N_SERV: N_SERV {
+      compatible = "zmk,behavior-tap-dance";
+      #binding-cells = <0>;
+      tapping-term-ms = <200>;
+      bindings = <&kp N>, <&kp N>, <&kp N>, <&kp N>, <&kp N>, <&kp N>, <&kp N>, <&kp N>, <&kp N>, <&to LR_SERV>;
+    };
+  };
+};
 
 / {
   keymap {
@@ -28,10 +69,9 @@
         // row 2
         &mt LWIN TAB   &kp A   &kp S   &kp D         &kp F   &kp G              &kp H   &kp J   &kp K   &kp L   &none       &kp BSPC
         // row 3
-        &kp LCTRL      &kp Z   &kp X   &lt LR_FN C   &kp V   &kp B            &kp N   &kp M   &none   &none   &kp COMMA   &kp DOT
+        &kp LCTRL      &kp Z   &kp X   &lt LR_FN C   &kp V   &B_SERV                 &N_SERV   &kp M   &none   &none   &kp COMMA   &kp DOT
         // thumb row
         &mt LALT ENTER   &kp LSHFT   &lt LR_NUMS SPACE                          &lt LR_NAV SPACE   &mo LR_WILDS   &lt LR_MEDIA ENTER
-        // &mt LALT ENTER   &kp LSHFT   &lt LR_NUMS SPACE                          &lt LR_NAV SPACE   &mo LR_WILDS   &lt LR_MEDIA ENTER
       >;
     };
     
