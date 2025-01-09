@@ -66,6 +66,7 @@
 // keys with mods
 / {
   behaviors {
+    // RU-keys
     COMMA_RU: COMMA_RU {
       compatible = "zmk,behavior-mod-morph";
       #binding-cells = <0>;
@@ -79,6 +80,27 @@
       bindings = <&kp RU_DOT_KEY>, <&kp DOT>;
       mods = <(MOD_LCTL|MOD_LALT|MOD_LGUI)>;
       keep-mods = <(MOD_LCTL|MOD_LALT|MOD_LGUI)>;
+    };
+    // wild-keys
+    FSLH_BSLH: FSLH_BSLH {
+      compatible = "zmk,behavior-mod-morph";
+      #binding-cells = <0>;
+      bindings = <&kp FSLH>, <&kp BSLH>;
+      mods = <(MOD_LSFT)>;
+    };
+    // TODO: убрать квадратную скобку отсюда
+    L_PAR_BRC_BKT: L_PAR_BRC_BKT {
+      compatible = "zmk,behavior-mod-morph";
+      #binding-cells = <0>;
+      bindings = <&kp LPAR>, <&cmt LBKT LBRC>;
+      mods = <(MOD_LSFT)>;
+    };
+    // TODO: убрать квадратную скобку отсюда
+    R_PAR_BRC_BKT: R_PAR_BRC_BKT {
+      compatible = "zmk,behavior-mod-morph";
+      #binding-cells = <0>;
+      bindings = <&kp RPAR>, <&cmt RBKT RBRC>;
+      mods = <(MOD_LSFT)>;
     };
   };
 };
@@ -133,6 +155,30 @@
         <&macro_pause_for_release>,
         <&to LR_MAIN_RU>,
         <&RU_LAYOUT>;
+    };
+  };
+};
+
+// other macros
+/ {
+  macros {
+    NUMBER_RU: NUMBER_RU {
+      compatible = "zmk,behavior-macro";
+      #binding-cells = <0>;
+      wait-ms = <10>;
+      tap-ms = <30>;
+      bindings =
+        <&LAYOUT_RU>,
+        <&kp LS(N3)>,
+        <&LAYOUT_EN>;
+    };
+    SRVC_TEST: SRVC_TEST {
+      compatible = "zmk,behavior-macro";
+      #binding-cells = <0>;
+      wait-ms = <10>;
+      tap-ms = <30>;
+      bindings =
+          <&kp S>,<&kp E>,<&kp R>,<&kp V>,<&kp I>,<&kp C>,<&kp E>;
     };
   };
 };
