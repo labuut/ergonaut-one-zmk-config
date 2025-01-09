@@ -162,6 +162,7 @@
 // other macros
 / {
   macros {
+    // RU-key
     NUMBER_RU: NUMBER_RU {
       compatible = "zmk,behavior-macro";
       #binding-cells = <0>;
@@ -172,13 +173,14 @@
         <&kp LS(N3)>,
         <&LAYOUT_EN>;
     };
+    // service layer test output
     SRVC_TEST: SRVC_TEST {
       compatible = "zmk,behavior-macro";
       #binding-cells = <0>;
       wait-ms = <10>;
       tap-ms = <30>;
       bindings =
-          <&kp S>,<&kp E>,<&kp R>,<&kp V>,<&kp I>,<&kp C>,<&kp E>;
+          <&kp S>,<&kp E>,<&kp R>,<&kp V>,<&kp I>,<&kp C>,<&kp E>; // 'SERVICE'
     };
   };
 };
