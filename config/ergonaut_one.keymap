@@ -228,5 +228,31 @@
         &trans   &trans   &trans                                                        &trans   &trans   &trans
       >;
     };
+
+    LR_NUMS {
+      bindings = <
+        // row 1
+        &trans   &trans   &trans    &trans    &trans   &trans            &none   &kp N7   &kp N8   &kp N9   &none    &none
+        // row 2
+        &trans   &trans   &trans    &trans    &trans   &trans            &none   &kp N4   &kp N5   &kp N6   &kp N0   &trans
+        // row 3
+        &trans   &trans   &trans    &trans    &trans   &trans            &none   &kp N1   &kp N2   &kp N3   &trans   &trans
+        // thumb row
+        &trans   &trans   &trans                                         &trans   &trans   &trans
+      >;
+    };
+
+    LR_FN {
+      bindings = <
+        // row 1
+        &trans   &trans   &trans    &trans    &trans   &trans            &none   &kp F7   &kp F8   &kp F9   &kp F10   &none
+        // row 2
+        &trans   &trans   &trans    &trans    &trans   &trans            &none   &kp F4   &kp F5   &kp F6   &kp F11   &trans
+        // row 3
+        &trans   &trans   &trans    &trans    &trans   &trans            &none   &kp F1   &kp F2   &kp F3   &kp F12   &none
+        // thumb row
+        &trans   &trans   &trans                                         &trans   &trans   &trans
+      >;
+    };
   };
 };
