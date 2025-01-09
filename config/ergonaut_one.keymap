@@ -166,5 +166,18 @@
         &trans   &trans   &trans                                               &trans   &WILDS_RU   &trans
       >;
     };
+
+    LR_WILDS {
+      bindings = <
+        // row 1
+        &kp GRAVE   &NUMBER_RU   &kp HASH   &kp PIPE   &kp AMPS    &kp CARET            &kp PRCNT   &FSLH_BSLH       &kp ASTRK        &kp SQT     &kp DQT    &none
+        // row 2
+        &trans      &none        &kp AT     &kp EXCL   &kp QMARK   &none                &kp EQUAL   &kp MINUS        &kp PLUS         &kp COLON   &kp SEMI   &trans
+        // row 3
+        &trans      &none        &kp DLLR   &none      &none       &none                &none       &L_PAR_BRC_BKT   &R_PAR_BRC_BKT   &kp LT      &kp GT     &trans
+        // thumb row
+        &trans   &trans   &trans                                                        &trans   &trans   &trans
+      >;
+    };
   };
 };
