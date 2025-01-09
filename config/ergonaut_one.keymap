@@ -206,14 +206,14 @@
       timeout-ms = <200>;
       key-positions = <TOP_LEFT_KEY_INDEX LEFT_THUMB_KEYS>;
       layers = <LR_MAIN_EN LR_MAIN_RU>; 
-      bindings = <&to LR_SERVICE>;
+      bindings = <&to LR_SERV>;
     };
     // go to service layer on right half
     to_serv_right {
       timeout-ms = <200>;
       key-positions = <TOP_RIGHT_KEY_INDEX RIGHT_THUMB_KEYS>;
       layers = <LR_MAIN_EN LR_MAIN_RU>; 
-      bindings = <&to LR_SERVICE>;
+      bindings = <&to LR_SERV>;
     };
   };
 };
