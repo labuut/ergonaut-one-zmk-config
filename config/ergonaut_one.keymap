@@ -267,5 +267,31 @@
         &trans   &trans   &trans                                                                        &trans   &trans   &trans
       >;
     };
+
+    LR_MEDIA {
+      bindings = <
+        // row 1
+        &trans   &none   &none   &none   &none   &none            &none   &kp C_PP     &kp C_PREV     &kp C_NEXT      &none   &kp DEL
+        // row 2
+        &trans   &none   &none   &none   &none   &none            &none   &kp C_MUTE   &kp C_VOL_DN   &kp C_VOL_UP   &none   &none
+        // row 3
+        &trans   &none   &none   &none   &none   &none            &none   &none        &kp C_BRI_DN   &kp C_BRI_UP   &none   &kp PSCRN
+        // thumb row
+        &trans   &trans   &trans                                  &trans   &trans   &trans
+      >;
+    };
+
+    LR_SERV {
+      bindings = <
+        // row 1
+        &to LR_MAIN_EN   &none   &none   &none   &none   &bootloader            &bootloader   &none           &none           &none           &none   &to LR_MAIN_EN
+        // row 2
+        &none            &none   &none   &none   &none   &sys_reset             &sys_reset    &none           &none           &none           &none   &none
+        // row 3
+        &none            &none   &none   &none   &none   &SRVC_TEST             &SRVC_TEST    &&bt BT_SEL 0   &&bt BT_SEL 1   &&bt BT_SEL 2   &none   &bt BT_CLR 
+        // thumb row
+        &trans   &trans   &trans                                                &trans   &trans   &trans
+      >;
+    };
   };
 };
