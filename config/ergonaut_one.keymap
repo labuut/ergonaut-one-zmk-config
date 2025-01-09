@@ -30,17 +30,15 @@
       //     bindings = <&WILDS_RU>, <&kp>;
       // };
 
-    // cmt - custom mod-tap
-    // cmt: cmt {
-    //   compatible = "zmk,behavior-hold-tap";
-    //   label = "custom-mod-tap";
-    //   #binding-cells = <2>;
-    //   flavor = "tap-preferred";
-    //   tapping-term-ms = <200>;
-    //   quick-tap-ms = <200>;
-    //   // bindings = <hold>, <tap>;
-    //   bindings = <&kp>, <&kp>;
-    // };
+    // cmt: custom mod-tap
+    cmt: cmt {
+      compatible = "zmk,behavior-hold-tap";
+      #binding-cells = <2>;
+      flavor = "tap-preferred";
+      tapping-term-ms = <200>;
+      quick-tap-ms = <200>;
+      bindings = <&kp>, <&kp>; // <hold fn>, <tap fn>;
+    };
 
     B_SERV: B_SERV {
       compatible = "zmk,behavior-tap-dance";
@@ -65,27 +63,29 @@
     LR_MAIN_EN {
       bindings = <
         // row 1
-        &kp ESC        &kp Q   &kp W   &kp E         &kp R   &kp T              &kp Y   &kp U   &kp I   &kp O   &kp P       &none
+        &kp ESC        &kp Q   &kp W   &kp E         &kp R   &kp T                &kp Y     &kp U   &kp I   &kp O   &kp P       &none
         // row 2
-        &mt LWIN TAB   &kp A   &kp S   &kp D         &kp F   &kp G              &kp H   &kp J   &kp K   &kp L   &none       &kp BSPC
+        &mt LWIN TAB   &kp A   &kp S   &kp D         &kp F   &kp G                &kp H     &kp J   &kp K   &kp L   &none       &kp BSPC
         // row 3
-        &kp LCTRL      &kp Z   &kp X   &lt LR_FN C   &kp V   &B_SERV                 &N_SERV   &kp M   &none   &none   &kp COMMA   &kp DOT
+        &kp LCTRL      &kp Z   &kp X   &lt LR_FN C   &kp V   &B_SERV              &N_SERV   &kp M   &none   &none   &kp COMMA   &kp DOT
         // thumb row
-        &mt LALT ENTER   &kp LSHFT   &lt LR_NUMS SPACE                          &lt LR_NAV SPACE   &mo LR_WILDS   &lt LR_MEDIA ENTER
+        &mt LALT ENTER   &kp LSHFT   &lt LR_NUMS SPACE                            &lt LR_NAV SPACE   &mo LR_WILDS   &lt LR_MEDIA ENTER
       >;
     };
     
-    // LR_MAIN_RU {
-    //   bindings = <
-    //     // row 1
-    //     &trans   &kp Q   &kp W   &kp E         &kp R   &cmt GRAVE T            &kp Y   &kp U          &kp I       &kp O     &kp P       &kp LBKT
-    //     // row 2
-    //     &trans   &kp A   &kp S   &kp D         &kp F   &kp G                   &kp H   &cmt SQT J     &kp K       &kp L     &kp SEMI    &trans
-    //     // row 3
-    //     &trans   &kp Z   &kp X   &lt LR_FN C   &kp V   &B_SERV                 &N_SERV   &cmt RBKT M    &kp COMMA   &kp DOT   &COMMA_RU   &DOT_RU
-    //     // thumb row
-    //     &trans   &trans   &trans                                               &trans   &WILDS_RU   &trans
-    //   >;
-    // };
+    LR_MAIN_RU {
+      bindings = <
+        // row 1
+        &trans   &kp Q   &kp W   &kp E         &kp R   &cmt GRAVE T            &kp Y   &kp U          &kp I       &kp O     &kp P       &kp LBKT
+        // row 2
+        &trans   &kp A   &kp S   &kp D         &kp F   &kp G                   &kp H   &cmt SQT J     &kp K       &kp L     &kp SEMI    &trans
+        // row 3
+        &trans   &kp Z   &kp X   &lt LR_FN C   &kp V   &B_SERV                 &N_SERV   &cmt RBKT M    &kp COMMA   &kp DOT   &trans   &trans
+        // &trans   &kp Z   &kp X   &lt LR_FN C   &kp V   &B_SERV                 &N_SERV   &cmt RBKT M    &kp COMMA   &kp DOT   &COMMA_RU   &DOT_RU
+        // thumb row
+        &trans   &trans   &trans                                               &trans   &trans   &trans
+        // &trans   &trans   &trans                                               &trans   &WILDS_RU   &trans
+      >;
+    };
   };
 };
