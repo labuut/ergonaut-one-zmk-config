@@ -36,11 +36,12 @@
   39 40 41
 #define K_KEY_INDEX 20
 #define L_KEY_INDEX 21
+#define TOP_LEFT_KEY_INDEX 0
+#define TOP_RIGHT_KEY_INDEX 11
 
 // tap global params
 &lt { quick_tap_ms = <100>; };
 &mt { quick-tap-ms = <400>; };
-&sl { release-after-ms = <1000>; };
 
 // tap mods
 / {
@@ -130,9 +131,9 @@
   };
 };
 
-// language switcher macros
 / {
   macros {
+    // language switcher macros
     // TODO: кажется, можно заменить на <&kp ...>
     EN_LAYOUT: EN_LAYOUT {
       compatible = "zmk,behavior-macro";
@@ -181,13 +182,7 @@
         <&to LR_MAIN_RU>,
         <&RU_LAYOUT>;
     };
-  };
-};
-
-// other macros
-/ {
-  macros {
-    // RU-key
+    // RU-keys
     NUMBER_RU: NUMBER_RU {
       compatible = "zmk,behavior-macro";
       #binding-cells = <0>;
@@ -210,16 +205,29 @@
   };
 };
 
-// lang switcher combo
 / {
   combos {
     compatible = "zmk,combos";
     // EN-RU layout switcher
     switch_lang {
-      timeout-ms = <20>;
+      timeout-ms = <50>;
       key-positions = <K_KEY_INDEX L_KEY_INDEX>;
       layers = <LR_MAIN_EN LR_MAIN_RU>; 
       bindings = <&EN_RU_SWITCHER>;
+    };
+    // go to service layer on left half
+    to_serv_left {
+      timeout-ms = <200>;
+      key-positions = <TOP_LEFT_KEY_INDEX LEFT_THUMB_KEYS>;
+      layers = <LR_MAIN_EN LR_MAIN_RU>; 
+      bindings = <&to LR_SERVICE>;
+    };
+    // go to service layer on right half
+    to_serv_right {
+      timeout-ms = <200>;
+      key-positions = <TOP_RIGHT_KEY_INDEX RIGHT_THUMB_KEYS>;
+      layers = <LR_MAIN_EN LR_MAIN_RU>; 
+      bindings = <&to LR_SERVICE>;
     };
   };
 };
