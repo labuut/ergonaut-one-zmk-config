@@ -163,7 +163,6 @@
       compatible = "zmk,behavior-macro";
       #binding-cells = <0>;
       bindings = 
-          <&out OUT_BLE>,
           <&bt BT_SEL 0>;
     };
     BT_1: bt_profile_macro_1 {
@@ -171,7 +170,6 @@
       compatible = "zmk,behavior-macro";
       #binding-cells = <0>;
       bindings =
-          <&out OUT_BLE>,
           <&bt BT_SEL 1>;
     };
     BT_2: bt_profile_macro_2 {
@@ -179,7 +177,6 @@
       compatible = "zmk,behavior-macro";
       #binding-cells = <0>;
       bindings =
-          <&out OUT_BLE>,
           <&bt BT_SEL 2>;
     };
   };
