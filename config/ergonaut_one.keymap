@@ -18,29 +18,29 @@
 #define LR_MEDIA    6
 #define LR_SERV     7
 
-#define LEFT_HAND_KEYS \
-  0  1  2  3  4  5     \
-  12 13 14 15 16 17    \
-  24 25 26 27 28 29
-#define LEFT_THUMB_KEYS \
-  36 37 38 
+// #define LEFT_HAND_KEYS \
+//   0  1  2  3  4  5     \
+//   12 13 14 15 16 17    \
+//   24 25 26 27 28 29
+// #define LEFT_THUMB_KEYS \
+//   36 37 38 
 
-#define RIGHT_HAND_KEYS \
-  6  7  8  9 10 11      \
-  18 19 20 21 22 23     \
-  30 31 32 33 34 35
-#define RIGHT_THUMB_KEYS \
-  39 40 41
+// #define RIGHT_HAND_KEYS \
+//   6  7  8  9 10 11      \
+//   18 19 20 21 22 23     \
+//   30 31 32 33 34 35
+// #define RIGHT_THUMB_KEYS \
+//   39 40 41
 
-&lt { quick_tap_ms = <100>; };
-&mt { quick-tap-ms = <400>; };
-&sl { release-after-ms = <1000>; };
+// &lt { quick_tap_ms = <100>; };
+// &mt { quick-tap-ms = <400>; };
+// &sl { release-after-ms = <1000>; };
 
-/ {
-  chosen {
-    zmk,matrix_transform = &default_transform;
-  };
-};
+// / {
+//   chosen {
+//     zmk,matrix_transform = &default_transform;
+//   };
+// };
 
 / {
   // tap mods
@@ -56,17 +56,17 @@
       //     bindings = <&WILDS_RU>, <&kp>;
       // };
 
-    // cmt - custom mod-tap
-    cmt: cmt {
-      compatible = "zmk,behavior-hold-tap";
-      // label = "custom-mod-tap";
-      #binding-cells = <2>;
-      flavor = "tap-preferred";
-      tapping-term-ms = <200>;
-      quick-tap-ms = <200>;
-      // bindings = <hold>, <tap>;
-      bindings = <&kp>, <&kp>;
-    };
+    // // cmt - custom mod-tap
+    // cmt: cmt {
+    //   compatible = "zmk,behavior-hold-tap";
+    //   // label = "custom-mod-tap";
+    //   #binding-cells = <2>;
+    //   flavor = "tap-preferred";
+    //   tapping-term-ms = <200>;
+    //   quick-tap-ms = <200>;
+    //   // bindings = <hold>, <tap>;
+    //   bindings = <&kp>, <&kp>;
+    // };
 
     // B_SERV: B_SERV {
     //   compatible = "zmk,behavior-tap-dance";
@@ -84,142 +84,142 @@
   };
 };
 
-/ {
-  macros {
-    LAYOUT_EN: LAYOUT_EN {
-      // label = "ZM_LAYOUT_EN";
-      compatible = "zmk,behavior-macro";
-      #binding-cells = <0>;
-      wait-ms = <10>;
-      tap-ms = <30>;
-      bindings =
-        <&kp LA(LS(N8))>; // <&kp CAPS>;
-    };
-    TO_MAIN_EN: TO_MAIN_EN {
-      // label = "ZM_TO_MAIN_EN";
-      compatible = "zmk,behavior-macro";
-      #binding-cells = <0>;
-      wait-ms = <10>;
-      tap-ms = <30>;
-      bindings =
-        <&LAYOUT_EN>,
-        <&to LR_MAIN_EN>;
-    };
-    LAYOUT_RU: LAYOUT_RU {
-      // label = "ZM_LAYOUT_RU";
-      compatible = "zmk,behavior-macro";
-      #binding-cells = <0>;
-      wait-ms = <10>;
-      tap-ms = <30>;
-      bindings =
-        <&kp LA(LS(N9))>; // <&kp LS(CAPS)>;
-    };
-    TO_MAIN_RU: TO_MAIN_RU {
-      // label = "ZM_TO_MAIN_RU";
-      compatible = "zmk,behavior-macro";
-      #binding-cells = <0>;
-      wait-ms = <10>;
-      tap-ms = <30>;
-      bindings =
-        <&LAYOUT_RU>,
-        <&to LR_MAIN_RU>;
-    };
-    WILDS_RU: WILDS_RU {
-      // label = "ZM_WILDS_RU";
-      compatible = "zmk,behavior-macro";
-      #binding-cells = <0>;
-      wait-ms = <10>;
-      tap-ms = <30>;
-      bindings =
-        <&LAYOUT_EN>,
-        <&to LR_WILDS>,
-        <&macro_pause_for_release>,
-        <&to LR_MAIN_RU>,
-        <&LAYOUT_RU>;
-    };
-    NUMBER_RU: NUMBER_RU {
-      // label = "ZM_NUMBER_RU";
-      compatible = "zmk,behavior-macro";
-      #binding-cells = <0>;
-      wait-ms = <10>;
-      tap-ms = <30>;
-      bindings =
-        <&LAYOUT_RU>,
-        <&kp LS(N3)>,
-        <&LAYOUT_EN>;
-    };
-    SRVC_TEST: SRVC_TEST {
-      // label = "ZM_SRVC_TEST";
-      compatible = "zmk,behavior-macro";
-      #binding-cells = <0>;
-      wait-ms = <10>;
-      tap-ms = <30>;
-      bindings =
-          <&kp S>,<&kp E>,<&kp R>,<&kp V>,<&kp I>,<&kp C>,<&kp E>;
-    };
-  };
-};
+// / {
+//   macros {
+//     LAYOUT_EN: LAYOUT_EN {
+//       // label = "ZM_LAYOUT_EN";
+//       compatible = "zmk,behavior-macro";
+//       #binding-cells = <0>;
+//       wait-ms = <10>;
+//       tap-ms = <30>;
+//       bindings =
+//         <&kp LA(LS(N8))>; // <&kp CAPS>;
+//     };
+//     TO_MAIN_EN: TO_MAIN_EN {
+//       // label = "ZM_TO_MAIN_EN";
+//       compatible = "zmk,behavior-macro";
+//       #binding-cells = <0>;
+//       wait-ms = <10>;
+//       tap-ms = <30>;
+//       bindings =
+//         <&LAYOUT_EN>,
+//         <&to LR_MAIN_EN>;
+//     };
+//     LAYOUT_RU: LAYOUT_RU {
+//       // label = "ZM_LAYOUT_RU";
+//       compatible = "zmk,behavior-macro";
+//       #binding-cells = <0>;
+//       wait-ms = <10>;
+//       tap-ms = <30>;
+//       bindings =
+//         <&kp LA(LS(N9))>; // <&kp LS(CAPS)>;
+//     };
+//     TO_MAIN_RU: TO_MAIN_RU {
+//       // label = "ZM_TO_MAIN_RU";
+//       compatible = "zmk,behavior-macro";
+//       #binding-cells = <0>;
+//       wait-ms = <10>;
+//       tap-ms = <30>;
+//       bindings =
+//         <&LAYOUT_RU>,
+//         <&to LR_MAIN_RU>;
+//     };
+//     WILDS_RU: WILDS_RU {
+//       // label = "ZM_WILDS_RU";
+//       compatible = "zmk,behavior-macro";
+//       #binding-cells = <0>;
+//       wait-ms = <10>;
+//       tap-ms = <30>;
+//       bindings =
+//         <&LAYOUT_EN>,
+//         <&to LR_WILDS>,
+//         <&macro_pause_for_release>,
+//         <&to LR_MAIN_RU>,
+//         <&LAYOUT_RU>;
+//     };
+//     NUMBER_RU: NUMBER_RU {
+//       // label = "ZM_NUMBER_RU";
+//       compatible = "zmk,behavior-macro";
+//       #binding-cells = <0>;
+//       wait-ms = <10>;
+//       tap-ms = <30>;
+//       bindings =
+//         <&LAYOUT_RU>,
+//         <&kp LS(N3)>,
+//         <&LAYOUT_EN>;
+//     };
+//     SRVC_TEST: SRVC_TEST {
+//       // label = "ZM_SRVC_TEST";
+//       compatible = "zmk,behavior-macro";
+//       #binding-cells = <0>;
+//       wait-ms = <10>;
+//       tap-ms = <30>;
+//       bindings =
+//           <&kp S>,<&kp E>,<&kp R>,<&kp V>,<&kp I>,<&kp C>,<&kp E>;
+//     };
+//   };
+// };
 
-/ {
-  // key with mod items
-  behaviors {
-    EN_RU: EN_RU {
-      compatible = "zmk,behavior-mod-morph";
-      // label = "EN_RU";
-      #binding-cells = <0>;
-      bindings = <&TO_MAIN_EN>, <&TO_MAIN_RU>;
-      mods = <(MOD_LCTL)>;
-    };
-    DOT_RU: DOT_RU {
-      compatible = "zmk,behavior-mod-morph";
-      // label = "DOT_RU";
-      #binding-cells = <0>;
-      bindings = <&mt DOT FSLH>, <&kp DOT>;
-      mods = <(MOD_LCTL|MOD_LALT|MOD_LGUI)>;
-      keep-mods = <(MOD_LCTL|MOD_LALT|MOD_LGUI)>;
-    };
-    COMMA_RU: COMMA_RU {
-      compatible = "zmk,behavior-mod-morph";
-      // label = "COMMA_RU";
-      #binding-cells = <0>;
-      bindings = <&kp LS(FSLH)>, <&kp COMMA>;
-      mods = <(MOD_LCTL|MOD_LALT|MOD_LGUI)>;
-      keep-mods = <(MOD_LCTL|MOD_LALT|MOD_LGUI)>;
-    };
-    FSLH_BSLH: FSLH_BSLH {
-      compatible = "zmk,behavior-mod-morph";
-      // label = "FSLH_BSLH";
-      #binding-cells = <0>;
-      bindings = <&kp FSLH>, <&kp BSLH>;
-      mods = <(MOD_LSFT)>;
-    };
-    L_PAR_BRC_BKT: L_PAR_BRC_BKT {
-      compatible = "zmk,behavior-mod-morph";
-      // label = "L_PAR_BRC_BKT";
-      #binding-cells = <0>;
-      bindings = <&kp LPAR>, <&cmt LBKT LBRC>;
-      mods = <(MOD_LSFT)>;
-    };
-    R_PAR_BRC_BKT: R_PAR_BRC_BKT {
-      compatible = "zmk,behavior-mod-morph";
-      // label = "R_PAR_BRC_BKT";
-      #binding-cells = <0>;
-      bindings = <&kp RPAR>, <&cmt RBKT RBRC>;
-      mods = <(MOD_LSFT)>;
-    };
-  };
-};
+// / {
+//   // key with mod items
+//   behaviors {
+//     EN_RU: EN_RU {
+//       compatible = "zmk,behavior-mod-morph";
+//       // label = "EN_RU";
+//       #binding-cells = <0>;
+//       bindings = <&TO_MAIN_EN>, <&TO_MAIN_RU>;
+//       mods = <(MOD_LCTL)>;
+//     };
+//     DOT_RU: DOT_RU {
+//       compatible = "zmk,behavior-mod-morph";
+//       // label = "DOT_RU";
+//       #binding-cells = <0>;
+//       bindings = <&mt DOT FSLH>, <&kp DOT>;
+//       mods = <(MOD_LCTL|MOD_LALT|MOD_LGUI)>;
+//       keep-mods = <(MOD_LCTL|MOD_LALT|MOD_LGUI)>;
+//     };
+//     COMMA_RU: COMMA_RU {
+//       compatible = "zmk,behavior-mod-morph";
+//       // label = "COMMA_RU";
+//       #binding-cells = <0>;
+//       bindings = <&kp LS(FSLH)>, <&kp COMMA>;
+//       mods = <(MOD_LCTL|MOD_LALT|MOD_LGUI)>;
+//       keep-mods = <(MOD_LCTL|MOD_LALT|MOD_LGUI)>;
+//     };
+//     FSLH_BSLH: FSLH_BSLH {
+//       compatible = "zmk,behavior-mod-morph";
+//       // label = "FSLH_BSLH";
+//       #binding-cells = <0>;
+//       bindings = <&kp FSLH>, <&kp BSLH>;
+//       mods = <(MOD_LSFT)>;
+//     };
+//     L_PAR_BRC_BKT: L_PAR_BRC_BKT {
+//       compatible = "zmk,behavior-mod-morph";
+//       // label = "L_PAR_BRC_BKT";
+//       #binding-cells = <0>;
+//       bindings = <&kp LPAR>, <&cmt LBKT LBRC>;
+//       mods = <(MOD_LSFT)>;
+//     };
+//     R_PAR_BRC_BKT: R_PAR_BRC_BKT {
+//       compatible = "zmk,behavior-mod-morph";
+//       // label = "R_PAR_BRC_BKT";
+//       #binding-cells = <0>;
+//       bindings = <&kp RPAR>, <&cmt RBKT RBRC>;
+//       mods = <(MOD_LSFT)>;
+//     };
+//   };
+// };
 
 / {
   combos {
     compatible = "zmk,combos";
     // EN-RU layout switcher
-    switch_lang {
-      timeout-ms = <20>;
-      key-positions = <20 21>; // K + L, indexes start from 0
-      layers = <LR_MAIN_EN LR_MAIN_RU>; 
-      bindings = <&EN_RU>;
-    };
+    // switch_lang {
+    //   timeout-ms = <20>;
+    //   key-positions = <20 21>; // K + L, indexes start from 0
+    //   layers = <LR_MAIN_EN LR_MAIN_RU>; 
+    //   bindings = <&EN_RU>;
+    // };
     // // LR_SERVICE. Left half: top left (Esc) + right bottom (Space)
     // to_serv_left {
     //   timeout-ms = <50>;
@@ -247,7 +247,8 @@
         // row 2
         &mt LWIN TAB   &kp A   &kp S   &kp D         &kp F   &kp G              &kp H   &kp J   &kp K   &kp L   &none       &kp BSPC
         // row 3
-        &kp LCTRL      &kp Z   &kp X   &lt LR_FN C   &kp V   &kp B            &kp N   &kp M   &none   &none   &kp COMMA   &kp DOT
+        &kp LCTRL      &kp Z   &kp X   &kp C   &kp V   &kp B            &kp N   &kp M   &none   &none   &kp COMMA   &kp DOT
+        // &kp LCTRL      &kp Z   &kp X   &lt LR_FN C   &kp V   &kp B            &kp N   &kp M   &none   &none   &kp COMMA   &kp DOT
         // thumb row
         &mt LALT ENTER   &kp LSHFT   &lt LR_NUMS SPACE                          &lt LR_NAV SPACE   &mo LR_WILDS   &lt LR_MEDIA ENTER
       >;
@@ -260,9 +261,11 @@
         // row 2
         &trans   &kp A   &kp S   &kp D         &kp F   &kp G                   &kp H   &cmt SQT J     &kp K       &kp L     &kp SEMI    &trans
         // row 3
-        &trans   &kp Z   &kp X   &lt LR_FN C   &kp V   &kp B            &kp N   &cmt RBKT M    &kp COMMA   &kp DOT   &COMMA_RU   &DOT_RU
+        &trans   &kp Z   &kp X   &lt LR_FN C   &kp V   &kp B            &kp N   &kp M    &kp COMMA   &kp DOT   &COMMA_RU   &DOT_RU
+        // &trans   &kp Z   &kp X   &lt LR_FN C   &kp V   &kp B            &kp N   &cmt RBKT M    &kp COMMA   &kp DOT   &COMMA_RU   &DOT_RU
         // thumb row
-        &trans   &trans   &trans                                               &trans   &WILDS_RU   &trans
+        &trans   &trans   &trans                                               &trans   &trans   &trans
+        // &trans   &trans   &trans                                               &trans   &WILDS_RU   &trans
       >;
     };
     
