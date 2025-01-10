@@ -169,25 +169,8 @@
         <&RU_LAYOUT>,
         <&to LR_MAIN_RU>;
     };
-//   lm: lm {
-//     compatible = "zmk,behavior-macro-two-param";
-//     wait-ms = <0>;
-//     tap-ms = <0>;
-//     #binding-cells = <2>;
-//     bindings
-//         = <&macro_param_1to1>
-//         , <&macro_press &mo MACRO_PLACEHOLDER>
-//         , <&macro_param_2to1>
-//         , <&macro_press &kp MACRO_PLACEHOLDER>
-//         , <&macro_pause_for_release>
-//         , <&macro_param_2to1>
-//         , <&macro_release &kp MACRO_PLACEHOLDER>
-//         , <&macro_param_1to1>
-//         , <&macro_release &mo MACRO_PLACEHOLDER>
-//         ;
-// };
-    // RU wild layer simple keys
-    ru_w_k: ru_w_k { // ru_wild_keys
+    // RU wild keys
+    ru_w: ru_w { // ru wild keys
       compatible = "zmk,behavior-macro-one-param";
       wait-ms = <0>;
       tap-ms = <0>;
@@ -198,17 +181,51 @@
         <&macro_press &kp MACRO_PLACEHOLDER>,
         <&RU_LAYOUT>;
     };
-    ru_w_m: ru_w_m { // ru_wild_macros
-      compatible = "zmk,behavior-macro-one-param";
-      wait-ms = <0>;
-      tap-ms = <0>;
-      #binding-cells = <1>;
-      bindings = 
+    RU_FSLH_BSLH: RU_FSLH_BSLH {
+      compatible = "zmk,behavior-macro";
+      #binding-cells = <0>;
+      wait-ms = <10>;
+      tap-ms = <30>;
+      bindings =
         <&EN_LAYOUT>,
-        <&macro_param_1to1>,
-        <&MACRO_PLACEHOLDER>,
+        <&FSLH_BSLH>,
         <&RU_LAYOUT>;
     };
+    RU_L_PAR_BRC_BKT: RU_L_PAR_BRC_BKT {
+      compatible = "zmk,behavior-macro";
+      #binding-cells = <0>;
+      wait-ms = <10>;
+      tap-ms = <30>;
+      bindings =
+        <&EN_LAYOUT>,
+        <&L_PAR_BRC_BKT>,
+        <&RU_LAYOUT>;
+    };
+
+
+
+
+    //     // wild-keys
+    // FSLH_BSLH: FSLH_BSLH {
+    //   compatible = "zmk,behavior-mod-morph";
+    //   #binding-cells = <0>;
+    //   bindings = <&kp FSLH>, <&kp BSLH>;
+    //   mods = <(MOD_LSFT)>;
+    // };
+    // // TODO: убрать квадратную скобку отсюда
+    // L_PAR_BRC_BKT: L_PAR_BRC_BKT {
+    //   compatible = "zmk,behavior-mod-morph";
+    //   #binding-cells = <0>;
+    //   bindings = <&kp LPAR>, <&cmt LBKT LBRC>;
+    //   mods = <(MOD_LSFT)>;
+    // };
+    // // TODO: убрать квадратную скобку отсюда
+    // R_PAR_BRC_BKT: R_PAR_BRC_BKT {
+    //   compatible = "zmk,behavior-mod-morph";
+    //   #binding-cells = <0>;
+    //   bindings = <&kp RPAR>, <&cmt RBKT RBRC>;
+    //   mods = <(MOD_LSFT)>;
+    // };
 
     // WILDS_RU: WILDS_RU {
     //   compatible = "zmk,behavior-macro";
@@ -318,11 +335,11 @@
     LR_WILDS_RU {
       bindings = <
         // row 1
-        &ru_w_k GRAVE   &kp LS(3)   &ru_w_k HASH   &ru_w_k PIPE   &ru_w_k AMPS    &ru_w_k CARET            &ru_w_k PRCNT   &ru_w_m FSLH_BSLH       &ru_w_k ASTRK        &ru_w_k SQT     &ru_w_k DQT    &none
+        &ru_w GRAVE   &kp LS(3)   &ru_w HASH   &ru_w PIPE   &ru_w AMPS    &ru_w CARET            &ru_w PRCNT   &RU_FSLH_BSLH       &ru_w ASTRK        &ru_w SQT     &ru_w DQT    &none
         // row 2
-        &trans      &none        &ru_w_k AT     &ru_w_k EXCL   &ru_w_k QMARK   &none                &ru_w_k EQUAL   &ru_w_k MINUS        &ru_w_k PLUS         &ru_w_k COLON   &ru_w_k SEMI   &trans
+        &trans      &none        &ru_w AT     &ru_w EXCL   &ru_w QMARK   &none                &ru_w EQUAL   &ru_w MINUS        &ru_w PLUS         &ru_w COLON   &ru_w SEMI   &trans
         // row 3
-        &trans      &none        &ru_w_k DLLR   &none      &none       &none                &none       &L_PAR_BRC_BKT   &R_PAR_BRC_BKT   &ru_w_k LT      &ru_w_k GT     &trans
+        &trans      &none        &ru_w DLLR   &none      &none       &none                &none       &RU_L_PAR_BRC_BKT   &R_PAR_BRC_BKT   &ru_w LT      &ru_w GT     &trans
         // thumb row
         &trans   &trans   &trans                                                        &trans   &trans   &trans
       >;
