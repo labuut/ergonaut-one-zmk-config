@@ -125,7 +125,7 @@
       compatible = "zmk,behavior-macro";
       #binding-cells = <0>;
       wait-ms = <10>;
-      tap-ms = <20>;
+      tap-ms = <10>;
       bindings =
         // <&kp EN_LAYOUT_SCUT>; // <&kp CAPS>;
         // EN_LAYOUT_SCUT realization
@@ -140,7 +140,7 @@
       compatible = "zmk,behavior-macro";
       #binding-cells = <0>;
       wait-ms = <10>;
-      tap-ms = <20>;
+      tap-ms = <10>;
       bindings =
         // <&kp RU_LAYOUT_SCUT>; // <&kp LS(CAPS)>;
         // RU_LAYOUT_SCUT realization
