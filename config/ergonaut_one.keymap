@@ -115,35 +115,35 @@
       bindings = <&kp FSLH_RU_SCUT>, <&kp FSLH>;
       mods = <(MOD_LSFT)>;
       keep-mods = <(MOD_LCTL|MOD_LSFT|MOD_LALT|MOD_LGUI)>;
-    }
+    };
     DQT_RU {
       compatible = "zmk,behavior-mod-morph";
       #binding-cells = <0>;
       bindings = <&kp DQT_RU_SCUT>, <&kp DQT>;
       mods = <(MOD_LCTL|MOD_LALT|MOD_LGUI)>;
       keep-mods = <(MOD_LCTL|MOD_LALT|MOD_LGUI)>;
-    }
+    };
     QMARK_RU {
       compatible = "zmk,behavior-mod-morph";
       #binding-cells = <0>;
       bindings = <&kp QMARK_RU_SCUT>, <&kp QMARK>;
       mods = <(MOD_LCTL|MOD_LALT|MOD_LGUI)>;
       keep-mods = <(MOD_LCTL|MOD_LALT|MOD_LGUI)>;
-    }
+    };
     COLON_RU {
       compatible = "zmk,behavior-mod-morph";
       #binding-cells = <0>;
       bindings = <&kp COLON_RU_SCUT>, <&kp COLON>;
       mods = <(MOD_LCTL|MOD_LALT|MOD_LGUI)>;
       keep-mods = <(MOD_LCTL|MOD_LALT|MOD_LGUI)>;
-    }
+    };
     SEMI_RU {
       compatible = "zmk,behavior-mod-morph";
       #binding-cells = <0>;
       bindings = <&kp SEMI_RU_SCUT>, <&kp SEMI>;
       mods = <(MOD_LCTL|MOD_LALT|MOD_LGUI)>;
       keep-mods = <(MOD_LCTL|MOD_LALT|MOD_LGUI)>;
-    }
+    };
     // EN wild-keys
     FSLH_BSLH_EN: FSLH_BSLH_EN {
       compatible = "zmk,behavior-mod-morph";
