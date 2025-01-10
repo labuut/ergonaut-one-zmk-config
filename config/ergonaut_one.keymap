@@ -6,6 +6,9 @@
 #define TAP_TIME_SHORT 10 // ms
 #define TAP_TIME_NORMAL 30 // ms
 
+#define WAITING_TIME_NULL 0 // ms
+#define WAITING_TIME_SHORT 10 // ms
+
 // layers
 #define LR_MAIN_EN  0
 #define LR_MAIN_RU  1
@@ -24,18 +27,18 @@
 #define RU_DOT_KEY FSLH
 
 // key indexes
-#define LEFT_HAND_KEYS \
+#define LEFT_HAND_KEYS_INDEXES \
   0  1  2  3  4  5     \
   12 13 14 15 16 17    \
   24 25 26 27 28 29
-#define LEFT_THUMB_KEYS \
+#define LEFT_THUMB_KEYS_INDEXES \
   36 37 38 
 
-#define RIGHT_HAND_KEYS \
+#define RIGHT_HAND_KEYS_INDEXES \
   6  7  8  9 10 11      \
   18 19 20 21 22 23     \
   30 31 32 33 34 35
-#define RIGHT_THUMB_KEYS \
+#define RIGHT_THUMB_KEYS_INDEXES \
   39 40 41
 #define K_KEY_INDEX 20
 #define L_KEY_INDEX 21
@@ -126,7 +129,7 @@
     TO_LR_MAIN_EN: TO_LR_MAIN_EN {
       compatible = "zmk,behavior-macro";
       #binding-cells = <0>;
-      wait-ms = <10>;
+      wait-ms = <WAITING_TIME_NULL>;
       tap-ms = <TAP_TIME_SHORT>;
       bindings =
         <&kp OS_EN_LAYOUT_SCUT>,
@@ -144,9 +147,7 @@
     TO_WILDS_RU: TO_WILDS_RU {
       compatible = "zmk,behavior-macro";
       #binding-cells = <0>;
-      // wait-ms = <0>;
-      // tap-ms = <TAP_TIME_SHORT>;
-      wait-ms = <10>;
+      wait-ms = <WAITING_TIME_NULL>;
       tap-ms = <TAP_TIME_SHORT>;
       bindings =
         <&to LR_WILDS>,
@@ -191,14 +192,14 @@
     // go to service layer on left half
     to_serv_left {
       timeout-ms = <200>;
-      key-positions = <TOP_LEFT_KEY_INDEX LEFT_THUMB_KEYS>;
+      key-positions = <TOP_LEFT_KEY_INDEX LEFT_THUMB_KEYS_INDEXES>;
       layers = <LR_MAIN_EN LR_MAIN_RU>; 
       bindings = <&to LR_SERV>;
     };
     // go to service layer on right half
     to_serv_right {
       timeout-ms = <200>;
-      key-positions = <TOP_RIGHT_KEY_INDEX RIGHT_THUMB_KEYS>;
+      key-positions = <TOP_RIGHT_KEY_INDEX RIGHT_THUMB_KEYS_INDEXES>;
       layers = <LR_MAIN_EN LR_MAIN_RU>; 
       bindings = <&to LR_SERV>;
     };
