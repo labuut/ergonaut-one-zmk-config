@@ -392,7 +392,7 @@
         // row 2
         &trans      &none        &AT_RU     &kp EXCL   &QMARK_RU   &none                &kp EQUAL   &kp MINUS        &kp PLUS         &COLON_RU   &SEMI_RU   &trans
         // row 3
-        &trans      &none        &DLLR_RU   &none      &none       &none                &none       &kp trans            &kp trans          &kp trans   &kp trans  &kp trans
+        &trans      &none        &DLLR_RU   &none      &none       &none                &none       &trans            &trans          &trans   &trans  &trans
         //                                                                                          &L_PAR_BRC_BKT_EN   &R_PAR_BRC_BKT_EN   &kp LT      &kp GT     
         // thumb row
         &trans   &trans   &trans                                                        &trans   &trans   &trans
