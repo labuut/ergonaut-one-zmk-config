@@ -3,6 +3,9 @@
 #include <dt-bindings/zmk/bt.h>
 #include <dt-bindings/zmk/pointing.h>
 
+#define TAP_TIME_SHORT 10 // ms
+#define TAP_TIME_NORMAL 30 // ms
+
 // layers
 #define LR_MAIN_EN  0
 #define LR_MAIN_RU  1
@@ -125,7 +128,7 @@
       compatible = "zmk,behavior-macro";
       #binding-cells = <0>;
       wait-ms = <10>;
-      tap-ms = <10>;
+      tap-ms = <TAP_TIME_SHORT>;
       bindings =
         // <&kp EN_LAYOUT_SCUT>; // <&kp CAPS>;
         // EN_LAYOUT_SCUT realization
@@ -140,7 +143,7 @@
       compatible = "zmk,behavior-macro";
       #binding-cells = <0>;
       wait-ms = <10>;
-      tap-ms = <10>;
+      tap-ms = <TAP_TIME_SHORT>;
       bindings =
         // <&kp RU_LAYOUT_SCUT>; // <&kp LS(CAPS)>;
         // RU_LAYOUT_SCUT realization
@@ -154,7 +157,7 @@
       compatible = "zmk,behavior-macro";
       #binding-cells = <0>;
       wait-ms = <10>;
-      tap-ms = <30>;
+      tap-ms = <TAP_TIME_SHORT>;
       bindings =
         <&EN_LAYOUT>,
         <&to LR_MAIN_EN>;
@@ -163,7 +166,7 @@
       compatible = "zmk,behavior-macro";
       #binding-cells = <0>;
       wait-ms = <10>;
-      tap-ms = <30>;
+      tap-ms = <TAP_TIME_SHORT>;
       bindings =
         <&RU_LAYOUT>,
         <&to LR_MAIN_RU>;
@@ -172,9 +175,9 @@
       compatible = "zmk,behavior-macro";
       #binding-cells = <0>;
       // wait-ms = <0>;
-      // tap-ms = <0>;
+      // tap-ms = <TAP_TIME_SHORT>;
       wait-ms = <10>;
-      tap-ms = <30>;
+      tap-ms = <TAP_TIME_SHORT>;
       bindings =
         <&EN_LAYOUT>,
         <&to LR_WILDS>,
@@ -187,7 +190,7 @@
       compatible = "zmk,behavior-macro";
       #binding-cells = <0>;
       wait-ms = <10>;
-      tap-ms = <30>;
+      tap-ms = <TAP_TIME_SHORT>;
       bindings =
         <&RU_LAYOUT>,
         <&kp RU_NUMBER_SCUT>,
@@ -198,7 +201,7 @@
       compatible = "zmk,behavior-macro";
       #binding-cells = <0>;
       wait-ms = <10>;
-      tap-ms = <30>;
+      tap-ms = <TAP_TIME_SHORT>;
       bindings =
           <&kp S>,<&kp E>,<&kp R>,<&kp V>,<&kp I>,<&kp C>,<&kp E>; // 'service'
     };
