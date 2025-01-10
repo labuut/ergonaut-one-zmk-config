@@ -150,8 +150,8 @@
       wait-ms = <WAITING_TIME_NULL>;
       tap-ms = <TAP_TIME_SHORT>;
       bindings =
-        <&to LR_WILDS>,
         <&kp OS_EN_LAYOUT_SCUT>,
+        <&to LR_WILDS>,
         <&macro_pause_for_release>,
         <&to LR_MAIN_RU>,
         <&kp RU_OS_LAYOUT_SCUT>;
