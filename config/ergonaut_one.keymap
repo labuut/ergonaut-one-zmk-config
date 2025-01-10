@@ -125,6 +125,20 @@
 
 / {
   macros {
+    // TODO: кажется, можно заменить на <&kp ...>
+    EN_LAYOUT: EN_LAYOUT {
+      compatible = "zmk,behavior-macro";
+      #binding-cells = <0>;
+      wait-ms = <WAITING_TIME_NULL>;
+      tap-ms = <TAP_TIME_SHORT>;
+      bindings =
+        // <&kp EN_LAYOUT_SCUT>; // <&kp CAPS>;
+        // EN_LAYOUT_SCUT realization
+        <&macro_press &kp LALT>,
+        <&macro_press &kp LS(N8)>,
+        <&macro_release &kp LS(N8)>,
+        <&macro_release &kp LALT>;
+    };
     // language switcher macros
     TO_LR_MAIN_EN: TO_LR_MAIN_EN {
       compatible = "zmk,behavior-macro";
@@ -150,7 +164,8 @@
       wait-ms = <WAITING_TIME_NULL>;
       tap-ms = <TAP_TIME_SHORT>;
       bindings =
-        <&kp OS_EN_LAYOUT_SCUT>,
+        // <&kp OS_EN_LAYOUT_SCUT>,
+        <&EN_LAYOUT>,
         <&to LR_WILDS>,
         <&macro_pause_for_release>,
         <&to LR_MAIN_RU>,
