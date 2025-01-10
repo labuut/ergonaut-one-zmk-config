@@ -22,8 +22,10 @@
 #define LR_SERV      8
 
 // key shortcuts
-#define OS_EN_LAYOUT_SCUT LA(LS(N8))
-#define OS_RU_LAYOUT_SCUT LA(LS(N9))
+#define OS_EN_LAYOUT_SCUT CAPS
+#define OS_RU_LAYOUT_SCUT LS(CAPS)
+// #define OS_EN_LAYOUT_SCUT LA(LS(N8))
+// #define OS_RU_LAYOUT_SCUT LA(LS(N9))
 
 // RU key shortcuts
 #define COLON_RU_SCUT LS(N6)
