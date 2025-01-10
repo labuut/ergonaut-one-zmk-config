@@ -223,6 +223,86 @@
         <&kp GRAVE>,
         <&kp OS_RU_LAYOUT_SCUT>;
     };
+    HASH_RU: HASH_RU {
+      compatible = "zmk,behavior-macro";
+      #binding-cells = <0>;
+      wait-ms = <WAITING_TIME_NULL>;
+      tap-ms = <TAP_TIME_SHORT>;
+      bindings =
+        <&kp OS_EN_LAYOUT_SCUT>,
+        <&kp HASH>,
+        <&kp OS_RU_LAYOUT_SCUT>;
+    };
+    PIPE_RU: PIPE_RU {
+      compatible = "zmk,behavior-macro";
+      #binding-cells = <0>;
+      wait-ms = <WAITING_TIME_NULL>;
+      tap-ms = <TAP_TIME_SHORT>;
+      bindings =
+        <&kp OS_EN_LAYOUT_SCUT>,
+        <&kp PIPE>,
+        <&kp OS_RU_LAYOUT_SCUT>;
+    };
+    AMPS_RU: AMPS_RU {
+      compatible = "zmk,behavior-macro";
+      #binding-cells = <0>;
+      wait-ms = <WAITING_TIME_NULL>;
+      tap-ms = <TAP_TIME_SHORT>;
+      bindings =
+        <&kp OS_EN_LAYOUT_SCUT>,
+        <&kp AMPS>,
+        <&kp OS_RU_LAYOUT_SCUT>;
+    };
+    CARET_RU: CARET_RU {
+      compatible = "zmk,behavior-macro";
+      #binding-cells = <0>;
+      wait-ms = <WAITING_TIME_NULL>;
+      tap-ms = <TAP_TIME_SHORT>;
+      bindings =
+        <&kp OS_EN_LAYOUT_SCUT>,
+        <&kp CARET>,
+        <&kp OS_RU_LAYOUT_SCUT>;
+    };
+    AT_RU: AT_RU {
+      compatible = "zmk,behavior-macro";
+      #binding-cells = <0>;
+      wait-ms = <WAITING_TIME_NULL>;
+      tap-ms = <TAP_TIME_SHORT>;
+      bindings =
+        <&kp OS_EN_LAYOUT_SCUT>,
+        <&kp AT>,
+        <&kp OS_RU_LAYOUT_SCUT>;
+    };
+    DLLR_RU: DLLR_RU {
+      compatible = "zmk,behavior-macro";
+      #binding-cells = <0>;
+      wait-ms = <WAITING_TIME_NULL>;
+      tap-ms = <TAP_TIME_SHORT>;
+      bindings =
+        <&kp OS_EN_LAYOUT_SCUT>,
+        <&kp DLLR>,
+        <&kp OS_RU_LAYOUT_SCUT>;
+    };
+    ASTRK_RU: ASTRK_RU {
+      compatible = "zmk,behavior-macro";
+      #binding-cells = <0>;
+      wait-ms = <WAITING_TIME_NULL>;
+      tap-ms = <TAP_TIME_SHORT>;
+      bindings =
+        <&kp OS_EN_LAYOUT_SCUT>,
+        <&kp ASTRK>,
+        <&kp OS_RU_LAYOUT_SCUT>;
+    };
+    SQT_RU: SQT_RU {
+      compatible = "zmk,behavior-macro";
+      #binding-cells = <0>;
+      wait-ms = <WAITING_TIME_NULL>;
+      tap-ms = <TAP_TIME_SHORT>;
+      bindings =
+        <&kp OS_EN_LAYOUT_SCUT>,
+        <&kp SQT>,
+        <&kp OS_RU_LAYOUT_SCUT>;
+    };
     // service layer test output
     SRVC_TEST: SRVC_TEST {
       compatible = "zmk,behavior-macro";
@@ -308,14 +388,12 @@
     LR_WILDS_RU {
       bindings = <
         // row 1
-        &GRAVE_RU   &kp NUMERO_RU_SCUT   &kp trans   &kp trans   &kp trans    &kp trans            &kp PRCNT   &FSLH_BSLH_RU       &kp -----        &kp ---     &DQT_RU    &none
-        //                               &kp HASH    &kp PIPE    &kp AMPS     &kp CARET                                            &kp ASTRK        &kp SQT 
+        &GRAVE_RU   &kp NUMERO_RU_SCUT   &HASH_RU   &PIPE_RU   &AMPS_RU    &CARET_RU            &kp PRCNT   &FSLH_BSLH_RU       &ASTRK_RU        &SQT_RU     &DQT_RU    &none
         // row 2
-        &trans      &none        &kp trans     &kp EXCL   &QMARK_RU   &none                &kp EQUAL   &kp MINUS        &kp PLUS         &COLON_RU   &SEMI_RU   &trans
-        //                       &kp AT                                                                                                          
+        &trans      &none        &AT_RU     &kp EXCL   &QMARK_RU   &none                &kp EQUAL   &kp MINUS        &kp PLUS         &COLON_RU   &SEMI_RU   &trans
         // row 3
-        &trans      &none        &kp trans   &none      &none       &none                &none       &kp trans            &kp trans          &kp trans   &kp trans  &trans
-        //                       &kp DLLR                                                            &L_PAR_BRC_BKT_EN   &R_PAR_BRC_BKT_EN   &kp LT      &kp GT     &trans
+        &trans      &none        &DLLR_RU   &none      &none       &none                &none       &kp trans            &kp trans          &kp trans   &kp trans  &trans
+        //                                                                                          &L_PAR_BRC_BKT_EN   &R_PAR_BRC_BKT_EN   &kp LT      &kp GT     
         // thumb row
         &trans   &trans   &trans                                                        &trans   &trans   &trans
       >;
