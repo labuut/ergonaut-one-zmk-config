@@ -17,8 +17,8 @@
 #define LR_SERV     7
 
 // key shortcuts
-#define EN_LAYOUT_SCUT LA(LS(N8))
-#define RU_LAYOUT_SCUT LA(LS(N9))
+#define EN_OS_LAYOUT_SCUT LA(LS(N8))
+#define RU_OS_LAYOUT_SCUT LA(LS(N9))
 #define RU_NUMBER_SCUT LS(N3)
 #define RU_COMMA_SCUT LS(FSLH)
 #define RU_DOT_KEY FSLH
@@ -56,7 +56,7 @@
       //     flavor = "hold-preferred";
       //     tapping-term-ms = <150>;
       //     // bindings = <hold>, <tap>;
-      //     bindings = <&WILDS_RU>, <&kp>;
+      //     bindings = <&TO_WILDS_RU>, <&kp>;
       // };
 
     // cmt: custom mod-tap
@@ -78,7 +78,7 @@
     EN_RU_SWITCHER: EN_RU_SWITCHER {
       compatible = "zmk,behavior-mod-morph";
       #binding-cells = <0>;
-      bindings = <&TO_MAIN_EN>, <&TO_MAIN_RU>;
+      bindings = <&TO_LR_MAIN_EN>, <&TO_LR_MAIN_RU>;
       mods = <(MOD_LCTL)>;
     };
     // RU-keys
@@ -124,54 +124,54 @@
   macros {
     // language switcher macros
     // TODO: кажется, можно заменить на <&kp ...>
-    EN_LAYOUT: EN_LAYOUT {
+    EN_OS_LAYOUT: EN_OS_LAYOUT {
       compatible = "zmk,behavior-macro";
       #binding-cells = <0>;
       wait-ms = <10>;
       tap-ms = <TAP_TIME_SHORT>;
       bindings =
-        // <&kp EN_LAYOUT_SCUT>; // <&kp CAPS>;
-        // EN_LAYOUT_SCUT realization
-        <&macro_press &kp LALT>,
-        <&macro_press &kp LSHFT>,
-        <&macro_tap &kp N8>,
-        <&macro_release &kp LSHFT>,
-        <&macro_release &kp LALT>;
+        <&kp EN_OS_LAYOUT_SCUT>; // <&kp CAPS>;
+        // // EN_OS_LAYOUT_SCUT realization
+        // <&macro_press &kp LALT>,
+        // <&macro_press &kp LSHFT>,
+        // <&macro_tap &kp N8>,
+        // <&macro_release &kp LSHFT>,
+        // <&macro_release &kp LALT>;
     };
     // TODO: кажется, можно заменить на <&kp ...>
-    RU_LAYOUT: RU_LAYOUT {
+    RU_OS_LAYOUT: RU_OS_LAYOUT {
       compatible = "zmk,behavior-macro";
       #binding-cells = <0>;
       wait-ms = <10>;
       tap-ms = <TAP_TIME_SHORT>;
       bindings =
-        // <&kp RU_LAYOUT_SCUT>; // <&kp LS(CAPS)>;
-        // RU_LAYOUT_SCUT realization
-        <&macro_press &kp LALT>,
-        <&macro_press &kp LSHFT>,
-        <&macro_tap &kp N9>,
-        <&macro_release &kp LSHFT>,
-        <&macro_release &kp LALT>;
+        <&kp RU_OS_LAYOUT_SCUT>; // <&kp LS(CAPS)>;
+        // // RU_OS_LAYOUT_SCUT realization
+        // <&macro_press &kp LALT>,
+        // <&macro_press &kp LSHFT>,
+        // <&macro_tap &kp N9>,
+        // <&macro_release &kp LSHFT>,
+        // <&macro_release &kp LALT>;
     };
-    TO_MAIN_EN: TO_MAIN_EN {
+    TO_LR_MAIN_EN: TO_LR_MAIN_EN {
       compatible = "zmk,behavior-macro";
       #binding-cells = <0>;
       wait-ms = <10>;
       tap-ms = <TAP_TIME_SHORT>;
       bindings =
-        <&EN_LAYOUT>,
+        <&EN_OS_LAYOUT>,
         <&to LR_MAIN_EN>;
     };
-    TO_MAIN_RU: TO_MAIN_RU {
+    TO_LR_MAIN_RU: TO_LR_MAIN_RU {
       compatible = "zmk,behavior-macro";
       #binding-cells = <0>;
       wait-ms = <10>;
       tap-ms = <TAP_TIME_SHORT>;
       bindings =
-        <&RU_LAYOUT>,
+        <&RU_OS_LAYOUT>,
         <&to LR_MAIN_RU>;
     };
-    WILDS_RU: WILDS_RU {
+    TO_WILDS_RU: TO_WILDS_RU {
       compatible = "zmk,behavior-macro";
       #binding-cells = <0>;
       // wait-ms = <0>;
@@ -179,11 +179,12 @@
       wait-ms = <10>;
       tap-ms = <TAP_TIME_SHORT>;
       bindings =
-        <&EN_LAYOUT>,
+        // <&EN_OS_LAYOUT>,
+        <&kp EN_OS_LAYOUT_SCUT>,
         <&to LR_WILDS>,
         <&macro_pause_for_release>,
         <&to LR_MAIN_RU>,
-        <&RU_LAYOUT>;
+        <&RU_OS_LAYOUT>;
     };
     // RU-keys
     NUMBER_RU: NUMBER_RU {
@@ -192,9 +193,9 @@
       wait-ms = <10>;
       tap-ms = <TAP_TIME_SHORT>;
       bindings =
-        <&RU_LAYOUT>,
+        <&RU_OS_LAYOUT>,
         <&kp RU_NUMBER_SCUT>,
-        <&EN_LAYOUT>;
+        <&EN_OS_LAYOUT>;
     };
     // service layer test output
     SRVC_TEST: SRVC_TEST {
@@ -261,7 +262,7 @@
         // row 3
         &trans   &kp Z   &kp X   &lt LR_FN C   &kp V   &kp B                   &kp N   &cmt RBKT M    &kp COMMA   &kp DOT   &COMMA_RU   &DOT_RU
         // thumb row
-        &trans   &trans   &trans                                               &trans   &WILDS_RU   &trans
+        &trans   &trans   &trans                                               &trans   &TO_WILDS_RU   &trans
       >;
     };
 
