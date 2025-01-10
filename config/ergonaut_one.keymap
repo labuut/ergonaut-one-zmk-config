@@ -175,8 +175,9 @@
       tap-ms = <30>;
       bindings =
         <&EN_LAYOUT>,
-        <&mo LR_WILDS>,
+        <&macro_press &mo LR_WILDS>,
         <&macro_pause_for_release>,
+        <&macro_release &mo LR_WILDS>,
         // <&to LR_MAIN_RU>,
         <&RU_LAYOUT>;
     };
@@ -198,7 +199,7 @@
       wait-ms = <10>;
       tap-ms = <30>;
       bindings =
-          <&kp S>,<&kp E>,<&kp R>,<&kp V>,<&kp I>,<&kp C>,<&kp E>; // 'SERVICE'
+          <&kp S>,<&kp E>,<&kp R>,<&kp V>,<&kp I>,<&kp C>,<&kp E>; // 'service'
     };
   };
 };
