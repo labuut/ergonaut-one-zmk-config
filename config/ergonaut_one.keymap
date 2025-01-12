@@ -79,7 +79,7 @@
     // // custom nav mod-tap
     NAVMT: NAVMT {
       compatible = "zmk,behavior-hold-tap";
-      #binding-cells = <0>;
+      #binding-cells = <2>;
       flavor = "tap-preferred";
       tapping-term-ms = <200>;
       quick-tap-ms = <200>;
@@ -249,7 +249,7 @@
         // row 3
         &kp LCTRL      &kp Z   &kp X   &lt LR_FN C   &kp V   &kp B              &kp N   &kp M   &none   &none   &kp COMMA   &kp DOT
         // thumb row
-        &mt LALT ENTER   &kp LSHFT   &lt LR_NUMS SPACE                          &NAVMT   &mo LR_WILDS_EN   &lt LR_MEDIA ENTER
+        &mt LALT ENTER   &kp LSHFT   &lt LR_NUMS SPACE                          &NAVMT 0 0   &mo LR_WILDS_EN   &lt LR_MEDIA ENTER
         // &mt LALT ENTER   &kp LSHFT   &lt LR_NUMS SPACE                          &lt LR_NAV SPACE   &mo LR_WILDS_EN   &lt LR_MEDIA ENTER
       >;
     };
