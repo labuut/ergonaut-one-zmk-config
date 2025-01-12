@@ -194,8 +194,8 @@
         <&tog_off LR_FN>,
         <&macro_release &mo LR_NUMS>;
     };
-    // EN wild macro
-    wlde: wlde {
+    // wild layer macros
+    wlde: wlde { // for EN wild layer
       compatible = "zmk,behavior-macro-one-param";
       #binding-cells = <1>;
       wait-ms = <WAITING_TIME_NULL>;
@@ -206,8 +206,7 @@
         <&kp MACRO_PLACEHOLDER>,
         <&kp OS_EN_LAYOUT_SCUT>;
     };
-    // RU wild macro
-    wldr: wldr { 
+    wldr: wldr { // for RU wild layer
       compatible = "zmk,behavior-macro-one-param";
       #binding-cells = <1>;
       wait-ms = <WAITING_TIME_NULL>;
