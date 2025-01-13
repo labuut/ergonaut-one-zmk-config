@@ -132,36 +132,36 @@
       mods = <(MOD_LCTL|MOD_LALT|MOD_LGUI)>;
       keep-mods = <(MOD_LCTL|MOD_LALT|MOD_LGUI)>;
     };
-    mrph: mrph { // mod morph
+    // mrph: mrph { // mod morph
+    //   compatible = "zmk,behavior-mod-morph";
+    //   #binding-cells = <2>;
+    //   bindings = <&kp>, <&kp>;
+    //   mods = <(MOD_LSFT)>;
+    // };
+    L_PAR_BRC: L_PAR_BRC {
       compatible = "zmk,behavior-mod-morph";
-      #binding-cells = <2>;
-      bindings = <&kp>, <&kp>;
+      #binding-cells = <0>;
+      bindings = <&kp LPAR>, <&kp LBRC>;
       mods = <(MOD_LSFT)>;
     };
-    // L_PAR_BRC: L_PAR_BRC {
-    //   compatible = "zmk,behavior-mod-morph";
-    //   #binding-cells = <0>;
-    //   bindings = <&kp LPAR>, <&kp LBRC>;
-    //   mods = <(MOD_LSFT)>;
-    // };
-    // R_PAR_BRC: R_PAR_BRC {
-    //   compatible = "zmk,behavior-mod-morph";
-    //   #binding-cells = <0>;
-    //   bindings = <&kp RPAR>, <&kp RBRC>;
-    //   mods = <(MOD_LSFT)>;
-    // };
-    // LBKT_LT: LBKT_LT {
-    //   compatible = "zmk,behavior-mod-morph";
-    //   #binding-cells = <0>;
-    //   bindings = <&kp LT>, <&kp LBKT>;
-    //   mods = <(MOD_LSFT)>;
-    // };
-    // RBKT_GT: RBKT_GT {
-    //   compatible = "zmk,behavior-mod-morph";
-    //   #binding-cells = <0>;
-    //   bindings = <&kp GT>, <&kp RBKT>;
-    //   mods = <(MOD_LSFT)>;
-    // };
+    R_PAR_BRC: R_PAR_BRC {
+      compatible = "zmk,behavior-mod-morph";
+      #binding-cells = <0>;
+      bindings = <&kp RPAR>, <&kp RBRC>;
+      mods = <(MOD_LSFT)>;
+    };
+    LBKT_LT: LBKT_LT {
+      compatible = "zmk,behavior-mod-morph";
+      #binding-cells = <0>;
+      bindings = <&kp LT>, <&kp LBKT>;
+      mods = <(MOD_LSFT)>;
+    };
+    RBKT_GT: RBKT_GT {
+      compatible = "zmk,behavior-mod-morph";
+      #binding-cells = <0>;
+      bindings = <&kp GT>, <&kp RBKT>;
+      mods = <(MOD_LSFT)>;
+    };
     // // TODO: убрать квадратную скобку отсюда
     // R_PAR_BRC_BKT_EN: R_PAR_BRC_BKT_EN {
     //   compatible = "zmk,behavior-mod-morph";
@@ -355,8 +355,7 @@
         // row 2
         &trans      &kp DLLR               &kp AT     &kp EXCL   &kp QMARK   &none                &kp EQUAL   &kp MINUS    &kp PLUS     &kp COLON   &kp SEMI   &trans
         // row 3
-        &trans      &kp LT                 &kp LBKT   &kp LBRC   &kp LPAR    &none                &none       &mrph LPAR LBRC   &mrph RPAR RBRC   &mrph LBKT LT    &mrph RBKT GT   &none
-        // &trans      &kp LT                 &kp LBKT   &kp LBRC   &kp LPAR    &none                &none       &kp RPAR    &kp RBRC    &kp RBKT    &kp GT     &none
+        &trans      &kp LT                 &kp LBKT   &kp LBRC   &kp LPAR    &none                &none       &kp RPAR    &kp RBRC    &kp RBKT    &kp GT     &none
         // thumb row
         &trans   &trans   &trans                                                                  &trans   &trans   &trans
       >;
