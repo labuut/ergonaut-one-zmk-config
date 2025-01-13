@@ -132,6 +132,36 @@
       mods = <(MOD_LCTL|MOD_LALT|MOD_LGUI)>;
       keep-mods = <(MOD_LCTL|MOD_LALT|MOD_LGUI)>;
     };
+    mrph: mrph { // mod morph
+      compatible = "zmk,behavior-mod-morph";
+      #binding-cells = <2>;
+      bindings = <&kp>, <&kp>;
+      mods = <(MOD_LSFT)>;
+    };
+    // L_PAR_BRC: L_PAR_BRC {
+    //   compatible = "zmk,behavior-mod-morph";
+    //   #binding-cells = <0>;
+    //   bindings = <&kp LPAR>, <&kp LBRC>;
+    //   mods = <(MOD_LSFT)>;
+    // };
+    // R_PAR_BRC: R_PAR_BRC {
+    //   compatible = "zmk,behavior-mod-morph";
+    //   #binding-cells = <0>;
+    //   bindings = <&kp RPAR>, <&kp RBRC>;
+    //   mods = <(MOD_LSFT)>;
+    // };
+    // LBKT_LT: LBKT_LT {
+    //   compatible = "zmk,behavior-mod-morph";
+    //   #binding-cells = <0>;
+    //   bindings = <&kp LT>, <&kp LBKT>;
+    //   mods = <(MOD_LSFT)>;
+    // };
+    // RBKT_GT: RBKT_GT {
+    //   compatible = "zmk,behavior-mod-morph";
+    //   #binding-cells = <0>;
+    //   bindings = <&kp GT>, <&kp RBKT>;
+    //   mods = <(MOD_LSFT)>;
+    // };
     // // TODO: убрать квадратную скобку отсюда
     // R_PAR_BRC_BKT_EN: R_PAR_BRC_BKT_EN {
     //   compatible = "zmk,behavior-mod-morph";
@@ -220,6 +250,17 @@
         <&kp MACRO_PLACEHOLDER>,
         <&kp OS_RU_LAYOUT_SCUT>;
     };
+    wldr2: wldr2 { // for RU wild layer
+      compatible = "zmk,behavior-macro-two-param";
+      #binding-cells = <1>;
+      wait-ms = <WAITING_TIME_NULL>;
+      tap-ms = <TAP_TIME_SHORT>;
+      bindings =
+        <&kp OS_EN_LAYOUT_SCUT>,
+        <&macro_param_1to1>,
+        <&kp MACRO_PLACEHOLDER>,
+        <&kp OS_RU_LAYOUT_SCUT>;
+    };
     // service layer test output
     SRVC_TEST: SRVC_TEST {
       compatible = "zmk,behavior-macro";
@@ -237,7 +278,7 @@
     compatible = "zmk,combos";
     // EN-RU layout switcher
     switch_lang {
-      timeout-ms = <50>;
+      timeout-ms = <30>;
       key-positions = <K_KEY_INDEX L_KEY_INDEX>;
       layers = <LR_MAIN_EN LR_MAIN_RU>; 
       bindings = <&EN_RU_SWITCHER>;
@@ -259,18 +300,7 @@
   };
 };
 
-// / {
-//     input_processors {
-//         zip_wheel_scaler: zip_wheel_scaler {
-//             compatible = "zmk,input-processor-scaler";
-//             #input-processor-cells = <2>;
-//             type = <INPUT_EV_REL>;
-//             codes = <INPUT_REL_WHEEL INPUT_REL_HWHEEL>;
-//             track-remainders;
-//         };
-//     };
-// };
-
+// '&mmv', '&mmv_input_listener' got from prostas: https://github.com/proostas/colemator-layout-zmk-module/blob/main/include/colemator/mouse.dtsi
 &mmv {
     acceleration-exponent = <1>;  // 1
     time-to-max-speed-ms = <300>; // 300
@@ -288,23 +318,6 @@
     };
 };
 
-// &msc {
-//     acceleration-exponent = <1>;  // 0
-//     time-to-max-speed-ms = <40>;  // 300
-//     delay-ms = <0>;
-//     trigger-period-ms = <8>;      // 16
-// };
-// &msc_input_listener {
-//     slow {
-//         layers = <14>;
-//         input-processors = <&zip_wheel_scaler 1 3>;
-//     };
-//     fast {
-//         layers = <13>;
-//         input-processors = <&zip_wheel_scaler 2 1>;
-//     };
-// };
-
 / {
   keymap {
     compatible = "zmk,keymap";
@@ -312,13 +325,13 @@
     LR_MAIN_EN {
       bindings = <
         // row 1
-        &kp ESC        &kp Q   &kp W   &kp E   &kp R   &kp T              &kp Y   &kp U   &kp I   &kp O   &kp P       &none
+        &kp ESC        &kp Q   &kp W   &kp E   &kp R   &kp T            &kp Y   &kp U   &kp I   &kp O   &kp P       &none
         // row 2
-        &mt LWIN TAB   &kp A   &kp S   &kp D   &kp F   &kp G              &kp H   &kp J   &kp K   &kp L   &none       &kp BSPC
+        &mt LWIN TAB   &kp A   &kp S   &kp D   &kp F   &kp G            &kp H   &kp J   &kp K   &kp L   &none       &kp BSPC
         // row 3
-        &kp LCTRL      &kp Z   &kp X   &kp C   &kp V   &kp B              &kp N   &kp M   &none   &none   &kp COMMA   &kp DOT
+        &kp LCTRL      &kp Z   &kp X   &kp C   &kp V   &kp B            &kp N   &kp M   &none   &none   &kp COMMA   &kp DOT
         // thumb row
-        &mt LALT ENTER   &kp LSHFT   &numsmt 0 SPACE                      &navmt 0 SPACE   &mo LR_WILDS_EN   &lt LR_MEDIA ENTER
+        &mt LALT ENTER   &kp LSHFT   &numsmt 0 SPACE                    &navmt 0 SPACE   &mo LR_WILDS_EN   &lt LR_MEDIA ENTER
       >;
     };
     
@@ -338,11 +351,12 @@
     LR_WILDS_EN {
       bindings = <
         // row 1
-        &kp GRAVE   &wlde NUMERO_RU_SCUT   &kp HASH   &kp PIPE   &kp AMPS    &kp CARET            &kp PRCNT   &kp FSLH    &kp ASTRK   &kp SQT     &kp DQT    &kp BSLH
+        &kp GRAVE   &wlde NUMERO_RU_SCUT   &kp HASH   &kp PIPE   &kp AMPS    &kp CARET            &kp PRCNT   &kp FSLH     &kp ASTRK    &kp SQT     &kp DQT    &kp BSLH
         // row 2
-        &trans      &kp DLLR               &kp AT     &kp EXCL   &kp QMARK   &none                &kp EQUAL   &kp MINUS   &kp PLUS    &kp COLON   &kp SEMI   &trans
+        &trans      &kp DLLR               &kp AT     &kp EXCL   &kp QMARK   &none                &kp EQUAL   &kp MINUS    &kp PLUS     &kp COLON   &kp SEMI   &trans
         // row 3
-        &trans      &kp LT                 &kp LBKT   &kp LBRC   &kp LPAR    &none                &none       &kp RPAR    &kp RBRC    &kp RBKT    &kp GT     &none
+        &trans      &kp LT                 &kp LBKT   &kp LBRC   &kp LPAR    &none                &none       &mrph LPAR LBRC   &mrph RPAR RBRC   &mrph LBKT LT    &mrph RBKT GT   &none
+        // &trans      &kp LT                 &kp LBKT   &kp LBRC   &kp LPAR    &none                &none       &kp RPAR    &kp RBRC    &kp RBKT    &kp GT     &none
         // thumb row
         &trans   &trans   &trans                                                                  &trans   &trans   &trans
       >;
@@ -364,11 +378,11 @@
     LR_NUMS {
       bindings = <
         // row 1
-        &trans   &trans   &trans    &tog LR_FN    &trans   &trans            &none        &kp N7   &kp N8   &kp N9   &none    &none
+        &trans   &trans   &trans    &tog LR_FN    &trans   &trans            &none   &kp N7   &kp N8   &kp N9   &none    &none
         // row 2
-        &trans   &trans   &trans    &trans    &trans   &trans                &none        &kp N4   &kp N5   &kp N6   &kp N0   &trans
+        &trans   &trans   &trans    &trans        &trans   &trans            &none   &kp N4   &kp N5   &kp N6   &kp N0   &trans
         // row 3
-        &trans   &trans   &trans    &trans    &trans   &trans                &none   &kp N1   &kp N2   &kp N3   &trans   &trans
+        &trans   &trans   &trans    &trans        &trans   &trans            &none   &kp N1   &kp N2   &kp N3   &trans   &trans
         // thumb row
         &trans   &trans   &trans                                             &trans   &trans   &trans
       >;
@@ -377,11 +391,11 @@
     LR_FN {
       bindings = <
         // row 1
-        &trans   &trans   &trans    &tog LR_FN    &trans   &trans            &none        &kp F7   &kp F8   &kp F9   &kp F10   &none
+        &trans   &trans   &trans    &tog LR_FN    &trans   &trans            &none   &kp F7   &kp F8   &kp F9   &kp F10   &none
         // row 2
-        &trans   &trans   &trans    &trans    &trans   &trans                &none        &kp F4   &kp F5   &kp F6   &kp F11   &trans
+        &trans   &trans   &trans    &trans        &trans   &trans            &none   &kp F4   &kp F5   &kp F6   &kp F11   &trans
         // row 3
-        &trans   &trans   &trans    &trans    &trans   &trans                &none   &kp F1   &kp F2   &kp F3   &kp F12   &none
+        &trans   &trans   &trans    &trans        &trans   &trans            &none   &kp F1   &kp F2   &kp F3   &kp F12   &none
         // thumb row
         &trans   &trans   &trans                                             &trans   &trans   &trans
       >;
@@ -390,26 +404,26 @@
     LR_NAV {
       bindings = <
         // row 1
-        &trans   &trans   &trans   &tog LR_MOUSE   &trans   &kp C_NEXT            &kp PG_UP       &kp HOME   &kp UP     &kp END     &none    &kp K_APP
+        &trans   &trans   &trans   &tog LR_MOUSE   &trans   &msc SCRL_UP              &kp PG_UP       &kp HOME   &kp UP     &kp END     &none    &kp K_APP
         // row 2
-        &trans   &trans   &trans   &trans   &trans   &kp C_PREV                   &kp PG_DN       &kp LEFT   &kp DOWN   &kp RIGHT   &none    &trans
+        &trans   &trans   &trans   &trans          &trans   &msc SCRL_DOWN            &kp PG_DN       &kp LEFT   &kp DOWN   &kp RIGHT   &none    &trans
         // row 3
-        &trans   &trans   &trans   &trans   &trans   &trans                       &none   &none      &none      &none       &trans   &trans
+        &trans   &trans   &trans   &trans          &trans   &trans                    &none           &none      &none      &none       &trans   &trans
         // thumb row
-        &trans   &trans   &trans                                                  &trans   &trans   &trans
+        &trans   &trans   &trans                                                      &trans   &trans   &trans
       >;
     };
 
     LR_MOUSE {
       bindings = <
         // row 1
-        &trans   &trans   &trans   &tog LR_MOUSE    &trans           &kp C_NEXT            &msc SCRL_UP     &none            &mmv MOVE_UP     &none             &none    &kp K_APP
+        &trans   &trans   &trans   &tog LR_MOUSE    &trans           &msc SCRL_UP              &msc SCRL_UP     &none            &mmv MOVE_UP     &none             &none    &kp K_APP
         // row 2
-        &trans   &trans   &trans   &mo LR_MOUSE_S   &mo LR_MOUSE_F   &kp C_PREV            &msc SCRL_DOWN   &mmv MOVE_LEFT   &mmv MOVE_DOWN   &mmv MOVE_RIGHT   &none    &trans
+        &trans   &trans   &trans   &mo LR_MOUSE_S   &mo LR_MOUSE_F   &msc SCRL_DOWN            &msc SCRL_DOWN   &mmv MOVE_LEFT   &mmv MOVE_DOWN   &mmv MOVE_RIGHT   &none    &trans
         // row 3
-        &trans   &trans   &trans   &trans           &trans           &trans                &none    &mkp LCLK        &mkp MCLK        &mkp RCLK         &trans   &trans
+        &trans   &trans   &trans   &trans           &trans           &trans                    &none            &mkp LCLK        &mkp MCLK        &mkp RCLK         &trans   &trans
         // thumb row
-        &trans   &trans   &trans                                                           &trans   &trans   &trans
+        &trans   &trans   &trans                                                               &trans   &trans   &trans
       >;
     };
 
