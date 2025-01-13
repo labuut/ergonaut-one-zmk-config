@@ -60,16 +60,6 @@
 // tap mods
 / {
   behaviors {
-      // // NOTE: example mod-tap with macro ("LR_WILDS_WITH 0 TAB". 0 is dummy argument: https://zmk.dev/docs/behaviors/hold-tap#using-different-behavior-types-with-hold-taps)
-      // LR_WILDS_WITH: LR_WILDS_WITH {
-      //     compatible = "zmk,behavior-hold-tap";
-      //     #binding-cells = <2>;
-      //     flavor = "hold-preferred";
-      //     tapping-term-ms = <150>;
-      //     // bindings = <hold>, <tap>;
-      //     bindings = <&TO_WILDS_RU>, <&kp>;
-      // };
-
     // custom mod-tap
     cmt: cmt {
       compatible = "zmk,behavior-hold-tap";
