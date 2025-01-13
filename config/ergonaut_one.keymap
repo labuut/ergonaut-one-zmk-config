@@ -125,6 +125,7 @@
       mods = <(MOD_LCTL|MOD_LALT|MOD_LGUI)>;
       keep-mods = <(MOD_LCTL|MOD_LALT|MOD_LGUI)>;
     };
+    // wild keys
     DOT_RU: DOT_RU {
       compatible = "zmk,behavior-mod-morph";
       #binding-cells = <0>;
@@ -132,12 +133,6 @@
       mods = <(MOD_LCTL|MOD_LALT|MOD_LGUI)>;
       keep-mods = <(MOD_LCTL|MOD_LALT|MOD_LGUI)>;
     };
-    // mrph: mrph { // mod morph
-    //   compatible = "zmk,behavior-mod-morph";
-    //   #binding-cells = <2>;
-    //   bindings = <&kp>, <&kp>;
-    //   mods = <(MOD_LSFT)>;
-    // };
     L_PAR_BRC: L_PAR_BRC {
       compatible = "zmk,behavior-mod-morph";
       #binding-cells = <0>;
@@ -150,25 +145,18 @@
       bindings = <&kp RPAR>, <&kp RBRC>;
       mods = <(MOD_LSFT)>;
     };
-    LBKT_LT: LBKT_LT {
+    LT_LBKT: LT_LBKT {
       compatible = "zmk,behavior-mod-morph";
       #binding-cells = <0>;
       bindings = <&kp LT>, <&kp LBKT>;
       mods = <(MOD_LSFT)>;
     };
-    RBKT_GT: RBKT_GT {
+    GT_RBKT: GT_RBKT {
       compatible = "zmk,behavior-mod-morph";
       #binding-cells = <0>;
       bindings = <&kp GT>, <&kp RBKT>;
       mods = <(MOD_LSFT)>;
     };
-    // // TODO: убрать квадратную скобку отсюда
-    // R_PAR_BRC_BKT_EN: R_PAR_BRC_BKT_EN {
-    //   compatible = "zmk,behavior-mod-morph";
-    //   #binding-cells = <0>;
-    //   bindings = <&kp RPAR>, <&cmt RBKT RBRC>;
-    //   mods = <(MOD_LSFT)>;
-    // };
   };
 };
 
@@ -250,7 +238,8 @@
         <&kp MACRO_PLACEHOLDER>,
         <&kp OS_RU_LAYOUT_SCUT>;
     };
-    L_PAR_BRC_RU: L_PAR_BRC_RU { // for RU wild layer
+    // RU wild keys
+    L_PAR_BRC_RU: L_PAR_BRC_RU {
       compatible = "zmk,behavior-macro";
       #binding-cells = <0>;
       wait-ms = <WAITING_TIME_NULL>;
@@ -258,6 +247,36 @@
       bindings =
         <&kp OS_EN_LAYOUT_SCUT>,
         <&L_PAR_BRC>,
+        <&kp OS_RU_LAYOUT_SCUT>;
+    };
+    R_PAR_BRC_RU: R_PAR_BRC_RU {
+      compatible = "zmk,behavior-macro";
+      #binding-cells = <0>;
+      wait-ms = <WAITING_TIME_NULL>;
+      tap-ms = <TAP_TIME_SHORT>;
+      bindings =
+        <&kp OS_EN_LAYOUT_SCUT>,
+        <&R_PAR_BRC>,
+        <&kp OS_RU_LAYOUT_SCUT>;
+    };
+    LT_LBKT_RU: LT_LBKT_RU {
+      compatible = "zmk,behavior-macro";
+      #binding-cells = <0>;
+      wait-ms = <WAITING_TIME_NULL>;
+      tap-ms = <TAP_TIME_SHORT>;
+      bindings =
+        <&kp OS_EN_LAYOUT_SCUT>,
+        <&LT_LBKT>,
+        <&kp OS_RU_LAYOUT_SCUT>;
+    };
+    GT_RBKT_RU: GT_RBKT_RU {
+      compatible = "zmk,behavior-macro";
+      #binding-cells = <0>;
+      wait-ms = <WAITING_TIME_NULL>;
+      tap-ms = <TAP_TIME_SHORT>;
+      bindings =
+        <&kp OS_EN_LAYOUT_SCUT>,
+        <&GT_RBKT>,
         <&kp OS_RU_LAYOUT_SCUT>;
     };
     // service layer test output
@@ -354,7 +373,7 @@
         // row 2
         &trans      &none               &kp AT     &kp EXCL   &kp QMARK   &none                &kp EQUAL   &kp MINUS    &kp PLUS     &kp COLON   &kp SEMI   &trans
         // row 3
-        &trans      &none                 &kp DLLR   &none   &none    &none                &none       &L_PAR_BRC   &R_PAR_BRC   &LBKT_LT    &RBKT_GT   &none
+        &trans      &none                 &kp DLLR   &none   &none    &none                &none       &L_PAR_BRC   &R_PAR_BRC   &LT_LBKT    &GT_RBKT   &none
         // &trans      &kp LT                 &kp LBKT   &kp LBRC   &kp LPAR    &none                &none       &kp RPAR    &kp RBRC    &kp RBKT    &kp GT     &none
         // thumb row
         &trans   &trans   &trans                                                                  &trans   &trans   &trans
@@ -368,7 +387,7 @@
         // row 2
         &trans        &none           &wldr AT     &kp EXCL     &wldr QMARK   &none                  &kp EQUAL   &kp MINUS    &kp PLUS      &wldr COLON   &wldr SEMI   &trans
         // row 3
-        &trans      &none                 &wldr DLLR   &none   &none    &none                        &none       &L_PAR_BRC_RU   &wldr RBRC    &wldr RBKT    &wldr GT     &none
+        &trans      &none                 &wldr DLLR   &none   &none    &none                        &none       &L_PAR_BRC_RU   &R_PAR_BRC_RU    &LT_LBKT_RU    &GT_RBKT_RU     &none
         // thumb row
         &trans   &trans   &trans                                                                          &trans   &trans   &trans
       >;
