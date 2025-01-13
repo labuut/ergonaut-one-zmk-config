@@ -250,15 +250,14 @@
         <&kp MACRO_PLACEHOLDER>,
         <&kp OS_RU_LAYOUT_SCUT>;
     };
-    wldr2: wldr2 { // for RU wild layer
-      compatible = "zmk,behavior-macro-two-param";
-      #binding-cells = <1>;
+    L_PAR_BRC_RU: L_PAR_BRC_RU { // for RU wild layer
+      compatible = "zmk,behavior-macro";
+      #binding-cells = <0>;
       wait-ms = <WAITING_TIME_NULL>;
       tap-ms = <TAP_TIME_SHORT>;
       bindings =
         <&kp OS_EN_LAYOUT_SCUT>,
-        <&macro_param_1to1>,
-        <&kp MACRO_PLACEHOLDER>,
+        <&L_PAR_BRC>,
         <&kp OS_RU_LAYOUT_SCUT>;
     };
     // service layer test output
@@ -367,9 +366,9 @@
         // row 1
         &wldr GRAVE   &kp NUMERO_RU_SCUT   &wldr HASH   &wldr PIPE   &wldr AMPS    &wldr CARET            &kp PRCNT   &wldr FSLH   &wldr ASTRK   &wldr SQT     &wldr DQT    &wldr BSLH
         // row 2
-        &trans        &wldr DLLR           &wldr AT     &kp EXCL     &wldr QMARK   &none                  &kp EQUAL   &kp MINUS    &kp PLUS      &wldr COLON   &wldr SEMI   &trans
+        &trans        &none           &wldr AT     &kp EXCL     &wldr QMARK   &none                  &kp EQUAL   &kp MINUS    &kp PLUS      &wldr COLON   &wldr SEMI   &trans
         // row 3
-        &trans        &wldr LT             &wldr LBKT   &wldr LBRC   &wldr LPAR    &none                  &none       &wldr RPAR   &wldr RBRC    &wldr RBKT    &wldr GT     &none
+        &trans      &none                 &wldr DLLR   &none   &none    &none                        &none       &L_PAR_BRC_RU   &wldr RBRC    &wldr RBKT    &wldr GT     &none
         // thumb row
         &trans   &trans   &trans                                                                          &trans   &trans   &trans
       >;
