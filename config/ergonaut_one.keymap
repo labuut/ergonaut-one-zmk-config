@@ -78,15 +78,15 @@
       quick-tap-ms = <200>;
       bindings = <&TO_NAV>, <&kp>; // <hold fn>, <tap fn>;
     };
-    // custom nums mod-tap
-    numsmt: numsmt {
-      compatible = "zmk,behavior-hold-tap";
-      #binding-cells = <2>;
-      flavor = "tap-preferred";
-      tapping-term-ms = <200>;
-      quick-tap-ms = <200>;
-      bindings = <&TO_NUMS>, <&kp>; // <hold fn>, <tap fn>;
-    };
+    // // custom nums mod-tap
+    // numsmt: numsmt {
+    //   compatible = "zmk,behavior-hold-tap";
+    //   #binding-cells = <2>;
+    //   flavor = "tap-preferred";
+    //   tapping-term-ms = <200>;
+    //   quick-tap-ms = <200>;
+    //   bindings = <&TO_NUMS>, <&kp>; // <hold fn>, <tap fn>;
+    // };
     // toggle off layer
     tog_off: tog_off {
       compatible = "zmk,behavior-toggle-layer";
@@ -194,17 +194,17 @@
         <&tog_off LR_MOUSE>,
         <&macro_release &mo LR_NAV>;
     };
-    TO_NUMS: TO_NUMS {
-      compatible = "zmk,behavior-macro";
-      #binding-cells = <0>;
-      wait-ms = <WAITING_TIME_NULL>;
-      tap-ms = <TAP_TIME_SHORT>;
-      bindings =
-        <&macro_press &mo LR_NUMS>,
-        <&macro_pause_for_release>,
-        <&tog_off LR_FN>,
-        <&macro_release &mo LR_NUMS>;
-    };
+    // TO_NUMS: TO_NUMS {
+    //   compatible = "zmk,behavior-macro";
+    //   #binding-cells = <0>;
+    //   wait-ms = <WAITING_TIME_NULL>;
+    //   tap-ms = <TAP_TIME_SHORT>;
+    //   bindings =
+    //     <&macro_press &mo LR_NUMS>,
+    //     <&macro_pause_for_release>,
+    //     <&tog_off LR_FN>,
+    //     <&macro_release &mo LR_NUMS>;
+    // };
     // wild layer macros
     wlde: wlde { // for EN wild layer
       compatible = "zmk,behavior-macro-one-param";
@@ -333,26 +333,26 @@
     LR_MAIN_EN {
       bindings = <
         // row 1
-        &kp ESC        &kp Q   &kp W   &kp E   &kp R   &kp T            &kp Y   &kp U   &kp I   &kp O   &kp P       &none
+        &kp ESC        &kp Q   &kp W   &kp E         &kp R   &kp T            &kp Y   &kp U   &kp I   &kp O   &kp P       &none
         // row 2
-        &mt LWIN TAB   &kp A   &kp S   &kp D   &kp F   &kp G            &kp H   &kp J   &kp K   &kp L   &none       &kp BSPC
+        &mt LWIN TAB   &kp A   &kp S   &kp D         &kp F   &kp G            &kp H   &kp J   &kp K   &kp L   &none       &kp BSPC
         // row 3
-        &kp LCTRL      &kp Z   &kp X   &kp C   &kp V   &kp B            &kp N   &kp M   &none   &none   &kp COMMA   &kp DOT
+        &kp LCTRL      &kp Z   &kp X   &lt LR_FN C   &kp V   &kp B            &kp N   &kp M   &none   &none   &kp COMMA   &kp DOT
         // thumb row
-        &mt LALT ENTER   &kp LSHFT   &numsmt 0 SPACE                    &navmt 0 SPACE   &mo LR_WILDS_EN   &lt LR_MEDIA ENTER
+        &mt LALT ENTER   &kp LSHFT   &lt LR_NUMS SPACE                        &navmt 0 SPACE   &mo LR_WILDS_EN   &lt LR_MEDIA ENTER
       >;
     };
     
     LR_MAIN_RU {
       bindings = <
         // row 1
-        &trans   &kp Q   &kp W   &kp E   &kp R   &cmt GRAVE T            &kp Y   &kp U          &kp I       &kp O     &kp P       &kp LBKT
+        &trans   &kp Q   &kp W   &kp E         &kp R   &cmt GRAVE T            &kp Y   &kp U          &kp I       &kp O     &kp P       &kp LBKT
         // row 2
-        &trans   &kp A   &kp S   &kp D   &kp F   &kp G                   &kp H   &cmt SQT J     &kp K       &kp L     &kp SEMI    &trans
+        &trans   &kp A   &kp S   &kp D         &kp F   &kp G                   &kp H   &cmt SQT J     &kp K       &kp L     &kp SEMI    &trans
         // row 3
-        &trans   &kp Z   &kp X   &kp C   &kp V   &kp B                   &kp N   &cmt RBKT M    &kp COMMA   &kp DOT   &COMMA_RU   &DOT_RU
+        &trans   &kp Z   &kp X   &lt LR_FN C   &kp V   &kp B                   &kp N   &cmt RBKT M    &kp COMMA   &kp DOT   &COMMA_RU   &DOT_RU
         // thumb row
-        &trans   &trans   &trans                                         &trans   &mo LR_WILDS_RU   &trans
+        &trans   &trans   &trans                                               &trans   &mo LR_WILDS_RU   &trans
       >;
     };
 
@@ -385,26 +385,26 @@
     LR_NUMS {
       bindings = <
         // row 1
-        &trans   &trans   &trans    &tog LR_FN    &trans   &trans            &none   &kp N7   &kp N8   &kp N9   &none    &none
+        &trans   &trans   &trans    &trans   &trans   &trans            &none   &kp N7   &kp N8   &kp N9   &none    &none
         // row 2
-        &trans   &trans   &trans    &trans        &trans   &trans            &none   &kp N4   &kp N5   &kp N6   &kp N0   &trans
+        &trans   &trans   &trans    &trans   &trans   &trans            &none   &kp N4   &kp N5   &kp N6   &kp N0   &trans
         // row 3
-        &trans   &trans   &trans    &trans        &trans   &trans            &none   &kp N1   &kp N2   &kp N3   &trans   &trans
+        &trans   &trans   &trans    &trans   &trans   &trans            &none   &kp N1   &kp N2   &kp N3   &trans   &trans
         // thumb row
-        &trans   &trans   &trans                                             &trans   &trans   &trans
+        &trans   &trans   &trans                                        &trans   &trans   &trans
       >;
     };
 
     LR_FN {
       bindings = <
         // row 1
-        &trans   &trans   &trans    &tog LR_FN    &trans   &trans            &none   &kp F7   &kp F8   &kp F9   &kp F10   &none
+        &trans   &trans   &trans    &trans   &trans   &trans            &none   &kp F7   &kp F8   &kp F9   &kp F10   &none
         // row 2
-        &trans   &trans   &trans    &trans        &trans   &trans            &none   &kp F4   &kp F5   &kp F6   &kp F11   &trans
+        &trans   &trans   &trans    &trans   &trans   &trans            &none   &kp F4   &kp F5   &kp F6   &kp F11   &trans
         // row 3
-        &trans   &trans   &trans    &trans        &trans   &trans            &none   &kp F1   &kp F2   &kp F3   &kp F12   &none
+        &trans   &trans   &trans    &trans   &trans   &trans            &none   &kp F1   &kp F2   &kp F3   &kp F12   &none
         // thumb row
-        &trans   &trans   &trans                                             &trans   &trans   &trans
+        &trans   &trans   &trans                                        &trans   &trans   &trans
       >;
     };
 
@@ -415,7 +415,7 @@
         // row 2
         &trans   &trans   &trans   &trans          &trans   &msc SCRL_DOWN            &kp PG_DN       &kp LEFT   &kp DOWN   &kp RIGHT   &none    &trans
         // row 3
-        &trans   &trans   &trans   &trans          &trans   &trans                    &none           &none      &none      &none       &trans   &trans
+        &trans   &trans   &trans   &trans          &trans   &trans                    &tog LR_MOUSE   &none      &none      &none       &trans   &trans
         // thumb row
         &trans   &trans   &trans                                                      &trans   &trans   &trans
       >;
@@ -428,7 +428,7 @@
         // row 2
         &trans   &trans   &trans   &mo LR_MOUSE_S   &mo LR_MOUSE_F   &msc SCRL_DOWN            &msc SCRL_DOWN   &mmv MOVE_LEFT   &mmv MOVE_DOWN   &mmv MOVE_RIGHT   &none    &trans
         // row 3
-        &trans   &trans   &trans   &trans           &trans           &trans                    &none            &mkp LCLK        &mkp MCLK        &mkp RCLK         &trans   &trans
+        &trans   &trans   &trans   &trans           &trans           &trans                    &tog LR_MOUSE    &mkp LCLK        &mkp MCLK        &mkp RCLK         &trans   &trans
         // thumb row
         &trans   &trans   &trans                                                               &trans   &trans   &trans
       >;
